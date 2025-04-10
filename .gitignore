@@ -1,0 +1,21 @@
+# System files
+.DS_Store
+Thumbs.db
+
+# Editor directories and files
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# Temporary files
+*.log
+*.swp
+*~
+
+# Compiled
+*.min.css
+*.min.js
+
+# No need to track the actual profile image that will be added later
+assets/images/profile.png
