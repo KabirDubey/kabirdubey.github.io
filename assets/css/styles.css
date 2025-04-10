@@ -18,11 +18,11 @@ html {
 
 body {
   font-family: 'EB Garamond', Garamond, Georgia, 'Times New Roman', Times, serif;
-  font-size: 1.125rem;
-  line-height: 1.6;
+  font-size: 1rem; /* Reduce base font size */
+  line-height: 1.4; /* Reduce line height for compactness */
   color: var(--primary-color);
   background-color: var(--background-color);
-  max-width: 800px;
+  max-width: 700px; /* Reduce max width of the content */
   margin: 0 auto;
   padding: 0 1rem;
 }
@@ -42,31 +42,56 @@ a:hover {
   text-decoration: underline;
 }
 
+.header-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.header-link:hover {
+  text-decoration: none;
+}
+
 h1, h2, h3, h4, h5, h6 {
   margin: var(--spacing-unit) 0;
   font-weight: 500;
 }
 
 h1 {
-  font-size: 2rem;
+  font-size: 1.8rem; /* Reduce heading size */
   text-align: center;
-  margin-top: 2rem;
+  margin-top: 1.5rem; /* Reduce top margin */
 }
 
 h2 {
-  font-size: 1.5rem;
+  font-size: 1.3rem; /* Reduce subheading size */
   border-bottom: 1px solid #eaecef;
   padding-bottom: 0.3rem;
-  margin-top: 2rem;
+  margin-top: 1.5rem; /* Reduce top margin */
+  margin-bottom: 0.5rem; /* Reduce bottom margin */
+}
+
+h2 .section-title-container {
+  display: flex;
+  align-items: center;
+}
+
+h2 .scholar-icon {
+  margin-left: 0.5rem;
+  width: 20px;
+  height: 20px;
 }
 
 p {
-  margin-bottom: var(--spacing-unit);
+  margin-bottom: 0.8rem; /* Reduce paragraph spacing */
 }
 
 ul, ol {
-  margin-bottom: var(--spacing-unit);
-  padding-left: 1.5rem;
+  margin-bottom: 0.5rem; /* Reduce list spacing */
+  padding-left: 1rem; /* Reduce indentation */
+}
+
+li {
+  margin-bottom: 0.3rem; /* Reduce spacing between list items */
 }
 
 /* Profile image */
@@ -74,13 +99,13 @@ ul, ol {
   width: 100%;
   display: flex;
   justify-content: center;
-  margin: var(--spacing-unit) 0;
+  margin: 1rem 0; /* Reduce spacing around profile image */
 }
 
 .profile-image {
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
+  width: 140px; /* Reduce profile image size */
+  height: 210px;
+  border-radius: 0;
   object-fit: cover;
 }
 
@@ -88,17 +113,17 @@ ul, ol {
 .introduction {
   max-width: 600px;
   margin: 0 auto;
-  text-align: center;
+  text-align: left;
 }
 
-/* Manuscripts and Papers sections */
-.manuscripts-list, .papers-list {
+/* Notes and Papers sections */
+.notes-list, .papers-list {
   list-style-type: disc;
   margin-left: 1rem;
 }
 
 .paper-entry {
-  margin-bottom: var(--spacing-unit);
+  margin-bottom: 1rem; /* Reduce spacing between paper entries */
 }
 
 .paper-entry .authors {
@@ -114,19 +139,19 @@ ul, ol {
 }
 
 .paper-entry .description {
-  margin-top: 0.5rem;
+  margin-top: 0.3rem; /* Reduce spacing above description */
 }
 
 .author-highlight {
   text-decoration: underline;
 }
 
-/* Other information section */
-.other-info {
+/* Other section */
+.other {
   margin-bottom: var(--spacing-unit);
 }
 
-.other-info-list {
+.other-list {
   list-style-type: disc;
   margin-left: 1rem;
 }
@@ -151,8 +176,8 @@ ul, ol {
   }
   
   .profile-image {
-    width: 180px;
-    height: 180px;
+    width: 140px;
+    height: 210px; 
   }
 }
 
@@ -170,7 +195,29 @@ ul, ol {
   }
   
   .profile-image {
-    width: 150px;
-    height: 150px;
+    width: 120px;
+    height: 180px;
   }
+}
+
+/* Compact section spacing */
+section {
+  margin-bottom: 1.5rem; /* Reduce spacing between sections */
+}
+
+/* Updated styles for notes and other sections */
+.notes {
+    /* Styles for the notes section */
+}
+
+.notes-list {
+    /* Styles for the notes list */
+}
+
+.other {
+    /* Styles for the other section */
+}
+
+.other-list {
+    /* Styles for the other list */
 }
