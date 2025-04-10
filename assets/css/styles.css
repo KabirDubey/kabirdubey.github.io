@@ -17,7 +17,7 @@ html {
 }
 
 body {
-  font-family: 'EB Garamond', Garamond, Georgia, 'Times New Roman', Times, serif;
+  font-family: 'Georgia', serif; /* Changed font to Georgia */
   font-size: 1rem; /* Reduce base font size */
   line-height: 1.4; /* Reduce line height for compactness */
   color: var(--primary-color);
@@ -103,8 +103,8 @@ li {
 }
 
 .profile-image {
-  width: 140px; /* Reduce profile image size */
-  height: 210px;
+  width: 200px; 
+  height: 300px;
   border-radius: 0;
   object-fit: cover;
 }
@@ -116,32 +116,33 @@ li {
   text-align: left;
 }
 
-/* Notes and Papers sections */
-.notes-list, .papers-list {
+/* Notes section */
+.notes-list {
   list-style-type: disc;
   margin-left: 1rem;
 }
 
-.paper-entry {
-  margin-bottom: 1rem; /* Reduce spacing between paper entries */
+/* Papers section */
+.papers > ul {
+  list-style-type: none;
+  margin-left: 0;
+  padding-left: 0;
 }
 
-.paper-entry .authors {
-  font-style: italic;
+/* Only keep bullets for nested lists in papers section */
+.papers ul ul {
+  list-style-type: disc;
+  margin-top: 0.3rem;
+  margin-bottom: 0.5rem;
+  margin-left: 1rem;
 }
 
-.paper-entry .title {
-  font-weight: 500;
+/* Paper list items */
+.papers li {
+  margin-bottom: 0.8rem;
 }
 
-.paper-entry .venue {
-  font-style: italic;
-}
-
-.paper-entry .description {
-  margin-top: 0.3rem; /* Reduce spacing above description */
-}
-
+/* Author highlight */
 .author-highlight {
   text-decoration: underline;
 }
@@ -178,6 +179,11 @@ li {
   .profile-image {
     width: 140px;
     height: 210px; 
+  }
+  
+  /* Mobile paper styling */
+  .papers > ul > li {
+    margin-bottom: 1rem;
   }
 }
 
