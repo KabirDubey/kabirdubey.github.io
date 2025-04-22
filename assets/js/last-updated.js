@@ -1,10 +1,11 @@
-// Automatically update the "Last updated" field with the current date
+// Set a fixed last updated date that only changes when the site is redeployed
 document.addEventListener('DOMContentLoaded', function() {
     const lastUpdatedElement = document.getElementById('last-updated');
-    const currentDate = new Date().toLocaleDateString('en-US', {
+    // This date will be updated when the site is built/deployed
+    const buildDate = new Date(document.lastModified).toLocaleDateString('en-US', {
         year: 'numeric',
         month: 'long',
         day: 'numeric'
     });
-    lastUpdatedElement.textContent = currentDate;
+    lastUpdatedElement.textContent = buildDate;
 });
