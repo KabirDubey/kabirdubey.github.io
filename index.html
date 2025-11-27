@@ -13,6 +13,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
@@ -24,11 +25,9 @@
     </header>
 
     <section class="introduction">
-        <p>Hi! I am a first year Ph.D. student in computer science at Northwestern University. My goal is to improve computer systems for quantum simulation and high-dimensional data processing. I'm particularly interested in what we can learn about these problems through a quantum algorithmic lens.</p> 
-        
-        <p>I graduated with a B.Sc. in mathematics and minor in computer science from the University of Chicago in June 2024. As an undergraduate, my research focus was in quantum adiabatic optimization and mathematical physics. Before that, I worked on machine learning models for accelerator physics and cellular agriculture.</p>
+        <p>Hi! I am a second-year Ph.D. student in Computer Science at <a href="https://sites.google.com/view/quantum-architecture/home?authuser=0">Northwestern University</a>. My research focuses on quantum simulation and high-dimensional data processing. I am particularly interested in developing the algorithms and software needed to efficiently learn from and compute with quantum information. I am grateful for the support of the <a href="https://www.sandboxaq.com/company/scholarships">SandboxAQ Research Excellence Scholarship</a>.</p>
 
-        <p>Currently, I am studying topological quantum error correction. In the summer of 2025, I will be a graduate student research assistant at Berkeley National Lab.</p>
+        <p>I graduated with a B.Sc. in mathematics and minor in computer science from the University of Chicago in June 2024. Since then, I have been studying the theory of algorithms and topological quantum error correction. Last summer, I worked as a research assistant at Berkeley National Laboratory with Jan Balewski and Daan Camps. As an undergraduate, my research focused on quantum adiabatic optimization and mathematical physics. Before that, I worked on machine learning models for accelerator physics and cellular agriculture.</p>
 
         <p>I love to collaborate. Please feel free to email me at `kabir [at] u [dot] northwestern [dot] edu`. I am also on 
             <a href="https://www.linkedin.com/in/kabir-dubey/">LinkedIn</a> and <a href="https://github.com/KabirDubey">GitHub</a>.</p>
@@ -38,16 +37,60 @@
         <h2>Notes</h2>
         <ul class="notes-list">
             <!-- Placeholder for notes -->
+            <li>Build a full-stack compiler for fault-tolerant quantum computer programs: <a href="https://groups.google.com/g/tqec-design-automation/c/IeDHu6q7S_Y/m/bddfiyUmAAAJ"><code>tqec</code></a>
+                <ul>
+                    <li>Also includes the demonstrations from our tutorial at <a href="https://qce.quantum.ieee.org/2025/tutorials-abstracts/">IEEE Quantum Week</a>.</li> 
+                </ul>
+            </li>
             <li>Primer on quantum simulation and complexity: <a href="https://figtwo.wordpress.com/2023/10/15/qcjc-primer-on-quantum-simulation-and-complexity/">sim-primer</a></li>
             <li>Expository notes on the Fourier uncertainty principles: <a href="https://math.uchicago.edu/~may/REU2021/REUPapers/Dubey.pdf">reu-fourier </a></li>
+        </ul>
+    </section>
+
+    <section class="posters">
+        <h2>Posters</h2>
+        <ul>
+            <li>
+                <div class="paper-header">
+                    <span><span class="author-highlight">Dubey, K.</span>, Camps, D., Balewski, J. (November 2025). Vectorized Quantum Signal Processing using Parallel Memory Queries.</span>
+                    <button class="abstract-toggle" aria-label="Toggle abstract">▼ Abstract</button>
+                </div>
+                <div class="abstract-content">
+                    <p><strong>Abstract:</strong> The theory of quantum signal processing (QSP) enables quantum computers to implement a generic class of scalar polynomials by encoding them as unitary transformations on a single qubit. We introduce a protocol that extends QSP by configuring the signal operator which encodes the input to the polynomial with QCrank, a quantum read-only memory (QROM) primitive for parallel access to real numbers. When given a QSP-achievable polynomial and vector of scalars, our protocol evaluates the polynomial at each component of the vector to additive precision $\varepsilon$ in $O(1/\varepsilon^{2})$ measurement shots. We compare vectorized QSP over a length $n$ vector with executing $n$ independent scalar QSP circuits and analyze the costs incurred in circuit width and entangling gate count. For experiments over practical workloads, we develop a comprehensive testbed of shot-based simulations of QSP using <code>Qiskit</code>, which we can provide early-access to upon request. In addition, we present a lightweight method for calibrating our computation in response to hardware noise, demonstrating feasibility on near-term quantum (NISQ) devices. This is joint work with Jan Balewski and Daan Camps from LBNL, supported by NERSC.</p>
+                </div>
+            </li>
+            <li>
+                <div class="paper-header">
+                    <span><span class="author-highlight">Dubey, K.</span>, Smith, K. N. (September 2025). Access Improvements to Densely Packed Quantum Memory.</span>
+                    <button class="abstract-toggle" aria-label="Toggle abstract">▼ Abstract</button>
+                </div>
+                <div class="abstract-content">
+                    <p><strong>Abstract:</strong> Fault-tolerant quantum memory is essential for large-scale quantum computer systems and has recently achieved major experimental and theoretical advances. In 2023, McEwen, Bacon, and Gidney showed that walking code circuits move surface code logical qubits diagonally while maintaining comparable logical performance to standard surface code circuits. Building on this work, we apply gliding codes to create access hallways in densely packed qubit arrays using minimal ancilla space. This approach provides arbitrary access to stored qubits and supports cache-like eviction of qubits from the storage array. For a storage layout of $l\times w$ surface code logical qubits, our design reduces spacetime volume by $O(lw)$ when compared to loose packings which allocate rows and columns of ancilla qubit patches between each logical qubit.</p>
+                </div>
+            </li>
         </ul>
     </section>
 
     <section class="papers">
         <h2><span class="section-title-container">Papers <a href="https://scholar.google.com/citations?user=vSmJIk4AAAAJ&hl=en" target="_blank" rel="noopener noreferrer"><img src="assets/images/scholar-icon.svg" alt="Google Scholar" class="scholar-icon"></a></span></h2>
         <ul>
-            <li>Perlin, M. A., Shaydulin, R., Hall, B. P., Minssen, P., Li, C., <span class="author-highlight">Dubey, K.</span>, Rines, R., Anschuetz, E. R., Pistoia, M., & Gokhale, P. (March 2024). <a href="https://arxiv.org/abs/2403.05653">Q-CHOP: Quantum constrained Hamiltonian optimization</a>. arXiv:2403.05653.</li>
-            <li>Roussel, R., Edelen, A., Ratner, D., <span class="author-highlight">Dubey, K.</span>, Gonzalez-Aguilera, J. P., Kim, Y. K., & Kuklev, N. (May 2022). <a href="https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.128.204801">Differentiable Preisach Modeling for Characterization and Optimization of Particle Accelerator Systems with Hysteresis</a>. Phys. Rev. Lett., 128(20), 204801.
+            <li>
+                <div class="paper-header">
+                    <span>Perlin, M. A., Shaydulin, R., Hall, B. P., Minssen, P., Li, C., <span class="author-highlight">Dubey, K.</span>, Rines, R., Anschuetz, E. R., Pistoia, M., & Gokhale, P. (March 2024). <a href="https://arxiv.org/abs/2403.05653">Q-CHOP: Quantum constrained Hamiltonian optimization</a>. ACM Transactions on Quantum Computing.</span>
+                    <button class="abstract-toggle" aria-label="Toggle abstract">▼ Abstract</button>
+                </div>
+                <div class="abstract-content">
+                    <p><strong>Abstract:</strong> Combinatorial optimization problems that arise in science and industry typically have constraints. Yet the presence of constraints makes them challenging to tackle using both classical and quantum optimization algorithms. We propose a new quantum algorithm for constrained optimization, which we call quantum constrained Hamiltonian optimization (Q-CHOP). Our algorithm leverages the observation that for many problems, while the best solution is difficult to find, the worst feasible (constraint-satisfying) solution is known. The basic idea is to to enforce a Hamiltonian constraint at all times, thereby restricting evolution to the subspace of feasible states, and slowly "rotate" an objective Hamiltonian to trace an adiabatic path from the worst feasible state to the best feasible state. We additionally propose a version of Q-CHOP that can start in any feasible state. Finally, we benchmark Q-CHOP against the commonly-used adiabatic algorithm with constraints enforced using a penalty term and find that Q-CHOP performs consistently better on a wide range of problems, including textbook problems on graphs, knapsack, combinatorial auction, as well as a real-world financial use case, namely bond exchange-traded fund basket optimization.</p>
+                </div>
+            </li>
+            <li>
+                <div class="paper-header">
+                    <span>Roussel, R., Edelen, A., Ratner, D., <span class="author-highlight">Dubey, K.</span>, Gonzalez-Aguilera, J. P., Kim, Y. K., & Kuklev, N. (May 2022). <a href="https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.128.204801">Differentiable Preisach Modeling for Characterization and Optimization of Particle Accelerator Systems with Hysteresis</a>. Phys. Rev. Lett., 128(20), 204801.</span>
+                    <button class="abstract-toggle" aria-label="Toggle abstract">▼ Abstract</button>
+                </div>
+                <div class="abstract-content">
+                    <p><strong>Abstract:</strong> Future improvements in particle accelerator performance are predicated on increasingly accurate online modeling of accelerators. Hysteresis effects in magnetic, mechanical, and material components of accelerators are often neglected in online accelerator models used to inform control algorithms, even though reproducibility errors from systems exhibiting hysteresis are not negligible in high precision accelerators. In this Letter, we combine the classical Preisach model of hysteresis with machine learning techniques to efficiently create nonparametric, high-fidelity models of arbitrary systems exhibiting hysteresis. We experimentally demonstrate how these methods can be used <i>in situ</i>, where a hysteresis model of an accelerator magnet is combined with a Bayesian statistical model of the beam response, allowing characterization of magnetic hysteresis solely from beam-based measurements. Finally, we explore how using these joint hysteresis-Bayesian statistical models allows us to overcome optimization performance limitations that arise when hysteresis effects are ignored.</p>
+                </div>
                 <ul>
                     <li>Presented at: Cornell Center for Bright Beams Joint Theme Meeting [<a href="https://indico.classe.cornell.edu/event/2093/">Slides</a>], Midstates Undergraduate Research Symposium 2022, University of Chicago Undergraduate Research Symposium 2022 [<a href="https://app.virtualpostersession.org/e/efba16cd3274f1b2dbd5570e9fe9a30d">Poster</a>]</li>
                 </ul>
@@ -61,12 +104,14 @@
             <li>Office: Mudd 3304</li>
             <li>ORCID: <a href="https://orcid.org/0000-0002-7621-9004">0000-0002-7621-9004</a></li>
             <li>Pronouns: he/him/his</li>
-            <li>Visitor count: <span id="visitor-count">0</span></li>
-            <li>Last updated: <span id="last-updated"></span></li>
+            <li>Visitor count: <img src="http://stuff.mit.edu/cgi/counter/kabirdubey" alt="several"></li>
+            <li>Last updated: November 27, 2025</li>
         </ul>
     </section>
 
-    <script src="assets/js/visitor-counter.js"></script>
-    <script src="assets/js/last-updated.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
+    <script src="assets/js/paper-abstracts.js"></script>
+    <script src="assets/js/katex-render.js"></script>
 </body>
 </html>

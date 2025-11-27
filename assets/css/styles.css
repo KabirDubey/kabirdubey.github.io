@@ -33,6 +33,12 @@ img {
   display: block;
 }
 
+/* Inline images within list items */
+.other-list img {
+  display: inline;
+  vertical-align: middle;
+}
+
 a {
   color: #0066cc;
   text-decoration: none;
@@ -40,6 +46,13 @@ a {
 
 a:hover {
   text-decoration: underline;
+}
+
+code {
+  font-family: 'Courier New', Courier, monospace;
+  padding: 0.1rem 0.3rem;
+  border-radius: 3px;
+  font-size: 1em;
 }
 
 .header-link {
@@ -122,6 +135,26 @@ li {
   margin-left: 1rem;
 }
 
+/* Posters section */
+.posters > ul {
+  list-style-type: none;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+/* Only keep bullets for nested lists in posters section */
+.posters ul ul {
+  list-style-type: disc;
+  margin-top: 0.3rem;
+  margin-bottom: 0.5rem;
+  margin-left: 1rem;
+}
+
+/* Poster list items */
+.posters li {
+  margin-bottom: 0.8rem;
+}
+
 /* Papers section */
 .papers > ul {
   list-style-type: none;
@@ -181,7 +214,8 @@ li {
     height: 210px; 
   }
   
-  /* Mobile paper styling */
+  /* Mobile poster and paper styling */
+  .posters > ul > li,
   .papers > ul > li {
     margin-bottom: 1rem;
   }
@@ -209,4 +243,73 @@ li {
 /* Compact section spacing */
 section {
   margin-bottom: 1.5rem; /* Reduce spacing between sections */
+}
+
+/* Paper abstract dropdown styles */
+.paper-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.paper-header span {
+  width: 100%;
+}
+
+.abstract-toggle {
+  background-color: transparent;
+  border: 1px solid #0066cc;
+  color: #0066cc;
+  padding: 0.19rem 0.38rem;
+  font-size: 0.64rem;
+  cursor: pointer;
+  border-radius: 3px;
+  white-space: nowrap;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  font-family: 'Georgia', serif;
+  align-self: flex-start;
+}
+
+.abstract-toggle:hover {
+  background-color: #0066cc;
+  color: #ffffff;
+}
+
+.abstract-toggle:focus {
+  outline: 2px solid #0066cc;
+  outline-offset: 2px;
+}
+
+.abstract-toggle.active {
+  background-color: #0066cc;
+  color: #ffffff;
+}
+
+.abstract-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  margin-bottom: 0.5rem;
+}
+
+.abstract-content.show {
+  max-height: 500px;
+}
+
+.abstract-content p {
+  margin-top: 0.5rem;
+  padding: 0.75rem;
+  background-color: #f8f9fa;
+  border-left: 3px solid #0066cc;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* Responsive adjustments for paper headers */
+@media screen and (max-width: 768px) {
+  .abstract-toggle {
+    font-size: 0.6rem;
+  }
 }
