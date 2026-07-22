@@ -96,7 +96,6 @@ CX 1 5 9 13 15 19 23 27 29 33 37 41 43 47 51 55 57 61 65 69 71 75
 CZ 8 12 14 18 16 20 22 26 28 32 30 34 36 40 42 46 44 48 50 54 56 60 58 62 64 68 70 74 72 76
 TICK
 MX 1 8 9 10 14 15 16 22 23 24 28 29 30 36 37 38 42 43 44 50 51 52 56 57 58 64 65 66 70 71 72 79
-OBSERVABLE_INCLUDE(0) rec[-28] rec[-26] rec[-25] rec[-23] rec[-22] rec[-20] rec[-19] rec[-17] rec[-16] rec[-14] rec[-13] rec[-11] rec[-10] rec[-8] rec[-7] rec[-5]
 DETECTOR(254, 12, 0) rec[-1]
 DETECTOR(252, 10, 0) rec[-3]
 DETECTOR(250, 12, 0) rec[-6]
@@ -177,7 +176,6 @@ CX 1 5 9 13 15 19 23 27 29 33 37 41 43 47 51 55 57 61 65 69 71 75
 CZ 8 12 14 18 16 20 22 26 28 32 30 34 36 40 42 46 44 48 50 54 56 60 58 62 64 68 70 74 72 76
 TICK
 MX 1 8 9 10 14 15 16 22 23 24 25 26 27 28 29 30 32 33 34 36 37 38 39 40 41 42 43 44 46 47 48 50 51 52 53 54 55 56 57 58 64 65 66 70 71 72 79
-OBSERVABLE_INCLUDE(0) rec[-36] rec[-30] rec[-24] rec[-18] rec[-12]
 DETECTOR(246, 12, 2) rec[-11] rec[-12] rec[-15] rec[-17] rec[-18]
 DETECTOR(244, 10, 2) rec[-18] rec[-19] rec[-21] rec[-24] rec[-25]
 DETECTOR(242, 12, 2) rec[-23] rec[-24] rec[-27] rec[-29] rec[-30]
@@ -238,8 +236,6 @@ M 1 2 8 10 16
 MX 63 65 70 71 79
 MY 74
 M 57 58 64 66 72
-OBSERVABLE_INCLUDE(0) rec[-20] rec[-19] rec[-17] rec[-15] rec[-13]
-OBSERVABLE_INCLUDE(0) rec[-9] rec[-8] rec[-6] rec[-4] rec[-2]
 DETECTOR(232, 10, 3) rec[-16] rec[-69]
 DETECTOR(234, 8, 3) rec[-22] rec[-68]
 DETECTOR(234, 14, 3) rec[-13] rec[-66]
@@ -252,6 +248,10 @@ DETECTOR(250, 14, 3) rec[-2] rec[-27]
 DETECTOR(252, 8, 3) rec[-9] rec[-26]
 DETECTOR(252, 12, 3) rec[-1] rec[-24]
 DETECTOR(254, 12, 3) rec[-7] rec[-23]
+DETECTOR(233.333, 12, 3) rec[-15] rec[-21] rec[-67]
+DETECTOR(235.333, 10, 3) rec[-14] rec[-19] rec[-64]
+DETECTOR(249.333, 12, 3) rec[-4] rec[-10] rec[-28]
+DETECTOR(251.333, 10, 3) rec[-3] rec[-8] rec[-25]
 TICK
 SHIFT_COORDS(0, 0, 1)
 TICK
@@ -328,3 +328,7 @@ DETECTOR(248, 12, 5) rec[-4] rec[-36]
 DETECTOR(250, 10, 5) rec[-3] rec[-35]
 DETECTOR(250, 14, 5) rec[-2] rec[-34]
 DETECTOR(252, 12, 5) rec[-1] rec[-33]
+OBSERVABLE_INCLUDE(0) rec[-177] rec[-175] rec[-174] rec[-172] rec[-171] rec[-169] rec[-168] rec[-166] rec[-165] rec[-163] rec[-162] rec[-160] rec[-159] rec[-157] rec[-156] rec[-154]
+OBSERVABLE_INCLUDE(0) rec[-106] rec[-100] rec[-94] rec[-88] rec[-82]
+OBSERVABLE_INCLUDE(0) rec[-68] rec[-67] rec[-65] rec[-63] rec[-61]
+OBSERVABLE_INCLUDE(0) rec[-57] rec[-56] rec[-54] rec[-52] rec[-50]

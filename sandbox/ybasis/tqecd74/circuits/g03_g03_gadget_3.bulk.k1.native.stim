@@ -360,22 +360,22 @@ M 51 52 74 76 98
 MX 37 38 61 83 85
 MY 50
 M 59 60 82 84 106
+DETECTOR(73, 4, 0) rec[-93] rec[-21]
 DETECTOR(76, 4, 0) rec[-65] rec[-13]
 DETECTOR(74, 2, 0) rec[-81] rec[-22]
 DETECTOR(74, 1, 0) rec[-82] rec[-16]
-DETECTOR(73, 4, 0) rec[-93] rec[-21]
 DETECTOR(76, 5, 0) rec[-71] rec[-64] rec[-55] rec[-18]
 DETECTOR(77, 2, 0) rec[-50] rec[-12]
+DETECTOR(73, 20, 0) rec[-88] rec[-10]
+DETECTOR(76, 21, 0) rec[-56] rec[-7]
 DETECTOR(76, 20, 0) rec[-57] rec[-2]
+DETECTOR(74, 17, 0) rec[-83] rec[-74] rec[-67] rec[-5]
 DETECTOR(74, 18, 0) rec[-73] rec[-11]
 DETECTOR(77, 18, 0) rec[-45] rec[-1]
-DETECTOR(74, 17, 0) rec[-83] rec[-74] rec[-67] rec[-5]
-DETECTOR(76, 21, 0) rec[-56] rec[-7]
-DETECTOR(73, 20, 0) rec[-88] rec[-10]
 DETECTOR(76, 2, 0) rec[-66] rec[-19] rec[-14]
 DETECTOR(74, 4, 0) rec[-80] rec[-20] rec[-15]
-DETECTOR(76, 18, 0) rec[-58] rec[-8] rec[-3]
 DETECTOR(74, 20, 0) rec[-72] rec[-9] rec[-4]
+DETECTOR(76, 18, 0) rec[-58] rec[-8] rec[-3]
 TICK
 SHIFT_COORDS(0, 0, 1)
 TICK

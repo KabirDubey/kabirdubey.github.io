@@ -260,12 +260,12 @@ TICK
 MX 1 8 9 10 14 15 16 23 35 37 42 43 51
 MY 46
 M 29 30 36 38 44
-DETECTOR(13, 4, 0) rec[-20] rec[-7]
-DETECTOR(12, 4, 0) rec[-21] rec[-1]
-DETECTOR(10, 5, 0) rec[-24] rec[-2]
-DETECTOR(10, 2, 0) rec[-26] rec[-11]
-DETECTOR(12, 1, 0) rec[-23] rec[-9]
 DETECTOR(9, 2, 0) rec[-32] rec[-31] rec[-28] rec[-5]
+DETECTOR(13, 4, 0) rec[-20] rec[-7]
+DETECTOR(10, 2, 0) rec[-26] rec[-11]
+DETECTOR(12, 4, 0) rec[-21] rec[-1]
+DETECTOR(12, 1, 0) rec[-23] rec[-9]
+DETECTOR(10, 5, 0) rec[-24] rec[-2]
 DETECTOR(10, 4, 0) rec[-25] rec[-10] rec[-4]
 DETECTOR(12, 2, 0) rec[-22] rec[-8] rec[-3]
 DETECTOR(2, 2, 0) rec[-41] rec[-18]

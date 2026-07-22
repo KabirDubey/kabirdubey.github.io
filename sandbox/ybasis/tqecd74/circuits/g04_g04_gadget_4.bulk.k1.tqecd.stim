@@ -197,7 +197,6 @@ CX 132 128 130 126 124 120 127 131 121 125 113 117
 TICK
 M 128 126 122 120 119
 MX 135 127 121 114 113
-OBSERVABLE_INCLUDE(0) rec[-9] rec[-8] rec[-4] rec[-2]
 DETECTOR(140, 12, 2) rec[-10] rec[-18]
 DETECTOR(138, 14, 2) rec[-8] rec[-17]
 DETECTOR(136, 10, 2) rec[-1] rec[-16]
@@ -225,7 +224,6 @@ CX 1 5 9 13 15 19 23 27 33 45 51 63 53 65 55 67 57 69 59 71 61 73 75 87 77 89 79
 CZ 8 12 14 18 16 20 22 26 30 42 32 44 34 46 36 48 38 50 52 64 54 66 56 68 58 70 60 72 76 88 78 90 80 92 82 94 84 96 102 110 112 116 114 118 120 124 126 130 128 132
 TICK
 MX 1 8 9 10 14 15 16 22 23 24 30 32 33 34 36 38 51 52 53 54 55 56 57 58 59 60 61 75 76 77 78 79 80 81 82 83 84 85 98 100 102 103 104 106 112 113 114 120 121 122 126 127 128 135
-OBSERVABLE_INCLUDE(0) rec[-50] rec[-48] rec[-47] rec[-45] rec[-44] rec[-43] rec[-41] rec[-40] rec[-35] rec[-33] rec[-31] rec[-29] rec[-26] rec[-24] rec[-22] rec[-20] rec[-15] rec[-14] rec[-12] rec[-11] rec[-10] rec[-8] rec[-7] rec[-5]
 DETECTOR(134, 12, 3) rec[-13]
 DETECTOR(132, 22, 3) rec[-17]
 DETECTOR(132, 18, 3) rec[-19]
@@ -250,6 +248,8 @@ DETECTOR(136, 10, 3) rec[-9] rec[-55]
 DETECTOR(142, 12, 3) rec[-1] rec[-59]
 DETECTOR(140, 8, 3) rec[-4] rec[-63]
 DETECTOR(138, 10, 3) rec[-7] rec[-60] rec[-61]
+DETECTOR(140, 10, 3) rec[-3] rec[-58]
+DETECTOR(137.333, 12, 3) rec[-6] rec[-56] rec[-57]
 TICK
 SHIFT_COORDS(0, 0, 1)
 TICK
@@ -344,7 +344,6 @@ CX 1 5 9 13 15 19 23 27 33 45 51 63 53 65 55 67 57 69 59 71 61 73 75 87 77 89 79
 CZ 8 12 14 18 16 20 22 26 30 42 32 44 34 46 36 48 38 50 52 64 54 66 56 68 58 70 60 72 76 88 78 90 80 92 82 94 84 96 102 110 112 116 114 118 120 124 126 130 128 132
 TICK
 MX 1 8 9 10 14 15 16 22 23 24 25 26 27 30 32 33 34 36 38 43 44 45 46 47 51 52 53 54 55 56 57 58 59 60 61 66 67 68 69 70 75 76 77 78 79 80 81 82 83 84 85 89 90 91 92 93 98 100 102 103 104 106 109 110 111 112 113 114 116 117 118 120 121 122 123 124 125 126 127 128 130 131 132 135
-OBSERVABLE_INCLUDE(0) rec[-73] rec[-63] rec[-49] rec[-48] rec[-46] rec[-45] rec[-31] rec[-21] rec[-15] rec[-9] rec[-3]
 DETECTOR(142, 12, 5) rec[-1] rec[-2] rec[-3]
 DETECTOR(140, 10, 5) rec[-3] rec[-4] rec[-6] rec[-9] rec[-10]
 DETECTOR(138, 12, 5) rec[-8] rec[-9] rec[-12] rec[-14] rec[-15]
@@ -436,9 +435,6 @@ M 51 52 74 76 98
 MX 37 38 61 83 85
 MY 50
 M 59 60 82 84 106
-OBSERVABLE_INCLUDE(0) rec[-31] rec[-30] rec[-28] rec[-26] rec[-24]
-OBSERVABLE_INCLUDE(0) rec[-21] rec[-20] rec[-17] rec[-14] rec[-12]
-OBSERVABLE_INCLUDE(0) rec[-10] rec[-9] rec[-6] rec[-3] rec[-1]
 DETECTOR(120, 10, 6) rec[-27] rec[-117]
 DETECTOR(122, 8, 6) rec[-33] rec[-116]
 DETECTOR(122, 14, 6) rec[-24] rec[-114]
@@ -457,6 +453,12 @@ DETECTOR(132, 20, 6) rec[-2] rec[-68]
 DETECTOR(132, 22, 6) rec[-7] rec[-67]
 DETECTOR(134, 2, 6) rec[-12] rec[-61]
 DETECTOR(134, 18, 6) rec[-1] rec[-56]
+DETECTOR(121.333, 12, 6) rec[-26] rec[-32] rec[-115]
+DETECTOR(123.333, 10, 6) rec[-25] rec[-30] rec[-112]
+DETECTOR(130, 3.33333, 6) rec[-15] rec[-20] rec[-91]
+DETECTOR(132, 1.33333, 6) rec[-14] rec[-19] rec[-77]
+DETECTOR(130, 19.3333, 6) rec[-4] rec[-9] rec[-83]
+DETECTOR(132, 17.3333, 6) rec[-3] rec[-8] rec[-69]
 TICK
 SHIFT_COORDS(0, 0, 1)
 TICK
@@ -558,3 +560,9 @@ DETECTOR(130, 18, 8) rec[-4] rec[-52]
 DETECTOR(132, 16, 8) rec[-3] rec[-51]
 DETECTOR(132, 20, 8) rec[-2] rec[-50]
 DETECTOR(134, 18, 8) rec[-1] rec[-49]
+OBSERVABLE_INCLUDE(0) rec[-306] rec[-305] rec[-301] rec[-299]
+OBSERVABLE_INCLUDE(0) rec[-293] rec[-291] rec[-290] rec[-288] rec[-287] rec[-286] rec[-284] rec[-283] rec[-278] rec[-276] rec[-274] rec[-272] rec[-269] rec[-267] rec[-265] rec[-263] rec[-258] rec[-257] rec[-255] rec[-254] rec[-253] rec[-251] rec[-250] rec[-248]
+OBSERVABLE_INCLUDE(0) rec[-178] rec[-168] rec[-154] rec[-153] rec[-151] rec[-150] rec[-136] rec[-126] rec[-120] rec[-114] rec[-108]
+OBSERVABLE_INCLUDE(0) rec[-103] rec[-102] rec[-100] rec[-98] rec[-96]
+OBSERVABLE_INCLUDE(0) rec[-93] rec[-92] rec[-89] rec[-86] rec[-84]
+OBSERVABLE_INCLUDE(0) rec[-82] rec[-81] rec[-78] rec[-75] rec[-73]
