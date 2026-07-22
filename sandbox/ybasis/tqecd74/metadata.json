@@ -1,0 +1,58 @@
+{
+  "name": "gadgets",
+  "timestamp": "2026_Jul_13_20h14m13s",
+  "start_time": "2026-07-13T20:14:13",
+  "config": {
+    "config_path": "/Users/kabirdubey/Projects/dev/ytqec/gadgetTesting/configs/config_regression.yaml",
+    "daes": [
+      "/Users/kabirdubey/Projects/dev/ytqec/gadgetTesting/gadgets/bgs"
+    ],
+    "gadgets": [
+      "/Users/kabirdubey/Projects/dev/ytqec/gadgetTesting/gadgets/bgs/g01_gadget_1.bgraph",
+      "/Users/kabirdubey/Projects/dev/ytqec/gadgetTesting/gadgets/bgs/g02_gadget_2.bgraph",
+      "/Users/kabirdubey/Projects/dev/ytqec/gadgetTesting/gadgets/bgs/g03_gadget_3.bgraph",
+      "/Users/kabirdubey/Projects/dev/ytqec/gadgetTesting/gadgets/bgs/g04_gadget_4.bgraph",
+      "/Users/kabirdubey/Projects/dev/ytqec/gadgetTesting/gadgets/bgs/g05_gadget_5.bgraph",
+      "/Users/kabirdubey/Projects/dev/ytqec/gadgetTesting/gadgets/bgs/g06_gadget_6.bgraph",
+      "/Users/kabirdubey/Projects/dev/ytqec/gadgetTesting/gadgets/bgs/g07_gadget_7.bgraph",
+      "/Users/kabirdubey/Projects/dev/ytqec/gadgetTesting/gadgets/bgs/g08_gadget_8.bgraph",
+      "/Users/kabirdubey/Projects/dev/ytqec/gadgetTesting/gadgets/bgs/g09_gadget_9.bgraph",
+      "/Users/kabirdubey/Projects/dev/ytqec/gadgetTesting/gadgets/bgs/g10_gadget_10.bgraph",
+      "/Users/kabirdubey/Projects/dev/ytqec/gadgetTesting/gadgets/bgs/g11_gadget_11.bgraph",
+      "/Users/kabirdubey/Projects/dev/ytqec/gadgetTesting/gadgets/bgs/g12_gadget_12.bgraph",
+      "/Users/kabirdubey/Projects/dev/ytqec/gadgetTesting/gadgets/bgs/s_gate_x.bgraph",
+      "/Users/kabirdubey/Projects/dev/ytqec/gadgetTesting/gadgets/bgs/s_gate_y.bgraph",
+      "/Users/kabirdubey/Projects/dev/ytqec/gadgetTesting/gadgets/bgs/s_gate_z.bgraph"
+    ],
+    "selection": {
+      "all": true
+    },
+    "conventions": [
+      "fixed_bulk"
+    ],
+    "annotators": [
+      "native",
+      "tqecd"
+    ],
+    "ks": [
+      1,
+      2
+    ],
+    "expected_distance": "2*k + 1",
+    "retain_passing": {
+      "native_stim": false,
+      "tqecd_stim": true,
+      "detector_free_stim": false,
+      "urls": false
+    }
+  },
+  "end_time": "2026-07-13T20:24:11",
+  "exit_code": 0,
+  "summary": {
+    "rows": 60,
+    "status_counts": {
+      "pass": 34,
+      "fail": 26
+    }
+  }
+}
