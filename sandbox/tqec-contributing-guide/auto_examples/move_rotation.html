@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Move and Rotation &#8212; TQEC  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=64cc4de3f052d77215f0" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=64cc4de3f052d77215f0" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=c83e6b79" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=64cc4de3f052d77215f0"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=64cc4de3f052d77215f0" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=64cc4de3f052d77215f0" />
+
+    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/thebelab-helper.js"></script>
+    <script src="../_static/sg-tags.js?v=d80f6fa4"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'auto_examples/move_rotation';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Steane Encoding" href="steane_encoding.html" />
+    <link rel="prev" title="Logical Memory" href="memory.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button type="button" class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">TQEC  documentation</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../index.html">
+    Introduction
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../user_guide/index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../gallery/index.html">
+    Gallery
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../contributor_guide.html">
+    Contributor Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../api.html">
+    API Reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../ethical_notice.html">
+    Ethical Notice
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/tqec/tqec" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://groups.google.com/g/tqec-design-automation" title="Google Group" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i><span class="visually-hidden">Google Group</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button type="button" class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../index.html">
+    Introduction
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../user_guide/index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../gallery/index.html">
+    Gallery
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../contributor_guide.html">
+    Contributor Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../api.html">
+    API Reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../ethical_notice.html">
+    Ethical Notice
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/tqec/tqec" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://groups.google.com/g/tqec-design-automation" title="Google Group" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i><span class="visually-hidden">Google Group</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button type="button" id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar">
+  <svg class="pst-icon" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="cnot.html">Logical CNOT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="memory.html">Logical Memory</a></li>
+<li class="toctree-l1 current active"><a aria-current="page" class="current reference internal" href="#">Move and Rotation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="steane_encoding.html">Steane Encoding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="three_cnots.html">Three Logical CNOTs</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../gallery/index.html" class="nav-link">Computation Gallery</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Move and Rotation</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div class="sphx-glr-download-link-note admonition note">
+<p class="admonition-title">Note</p>
+<p><a class="reference internal" href="#sphx-glr-download-auto-examples-move-rotation-py"><span class="std std-ref">Go to the end</span></a>
+to download the full example code.</p>
+</div>
+<section class="sphx-glr-example-title" id="move-and-rotation">
+<span id="sphx-glr-auto-examples-move-rotation-py"></span><h1>Move and Rotation<a class="headerlink" href="#move-and-rotation" title="Link to this heading">#</a></h1>
+<p>This example demonstrates moving and rotating the spatial boundary of a logical qubit.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span class="c1"># ruff: noqa: E402</span><span class="w">
+</span><span class="w">
+</span><span class="c1">#!/usr/bin/env python</span><span class="w">
+</span><span class="c1"># coding: utf-8</span><span class="w">
+</span><span class="w">
+</span><span class="c1"># # Move Rotation</span><span class="w">
+</span><span class="c1">#</span><span class="w">
+</span><span class="c1"># This notebook demonstrates moving and rotating the spatial boundary of a logical</span><span class="w">
+</span><span class="c1"># qubit. Rotating the boundary types of a logical qubit is a crucial operation in</span><span class="w">
+</span><span class="c1"># lattice surgery. For instance, merging two logical qubits requires their boundary</span><span class="w">
+</span><span class="c1"># types to be aligned. Therefore, performing such boundary-type rotations is often</span><span class="w">
+</span><span class="c1"># essential to facilitate seamless lattice merging.</span><span class="w">
+</span><span class="c1"># ### Construction</span><span class="w">
+</span><span class="c1">#</span><span class="w">
+</span><span class="c1"># `tqec` provides the builtin function `tqec.gallery.move_rotation` to construct it.</span><span class="w">
+</span></pre></div></div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span class="kn">from</span><span class="w"> </span><span class="nn">tqec</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-tqec sphx-glr-backref-type-py-class sphx-glr-backref-instance reference internal" href="../_autosummary/tqec.utils.Basis.html#tqec.utils.Basis" title="tqec.Basis"><span class="n">Basis</span></a><span class="w">
+</span><span class="kn">from</span><span class="w"> </span><span class="nn">tqec</span><span class="nn">.</span><span class="nn">gallery</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-tqec-gallery sphx-glr-backref-type-py-function reference internal" href="../_autosummary/tqec.gallery.move_rotation.html#tqec.gallery.move_rotation" title="tqec.gallery.move_rotation"><span class="n">move_rotation</span></a><span class="w">
+</span><span class="w">
+</span><span class="n">graph</span> <span class="o">=</span> <a class="sphx-glr-backref-module-tqec-gallery sphx-glr-backref-type-py-function reference internal" href="../_autosummary/tqec.gallery.move_rotation.html#tqec.gallery.move_rotation" title="tqec.gallery.move_rotation"><span class="n">move_rotation</span></a><span class="p">(</span><span class="p">)</span><span class="w">
+</span></pre></div></div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span class="n">graph</span><span class="o">.</span><span class="n">view_as_html</span><span class="p">(</span><span class="p">)</span><span class="w">
+</span><span class="w">
+</span><span class="w">
+</span><span class="c1"># This operation rotates the orientation of the logical observable through a</span><span class="w">
+</span><span class="c1"># spatial L-shape junction. As shown below, the correlation surface initially</span><span class="w">
+</span><span class="c1"># aligns with the Y-axis and finally aligns with the X-axis.</span><span class="w">
+</span></pre></div></div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span class="n">correlation_surfaces</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="n">find_correlation_surfaces</span><span class="p">(</span><span class="p">)</span><span class="w">
+</span></pre></div></div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span class="n">graph</span><span class="o">.</span><span class="n">view_as_html</span><span class="p">(</span><span class="w">
+</span>    <span class="n">pop_faces_at_directions</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;</span><span class="s2">-Y</span><span class="s2">&quot;</span><span class="p">,</span><span class="p">)</span><span class="p">,</span><span class="w">
+</span>    <span class="n">show_correlation_surface</span><span class="o">=</span><span class="n">correlation_surfaces</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="p">,</span><span class="w">
+</span><span class="p">)</span><span class="w">
+</span><span class="w">
+</span><span class="w">
+</span><span class="c1"># ### Example Circuit</span><span class="w">
+</span><span class="c1">#</span><span class="w">
+</span><span class="c1"># Here we show an example circuit of move rotation with $d=3$ surface code that is initialized and measured in the $X$ basis. You can download the circuit :download:`here &lt;../media/gallery/move_rotation/circuit.stim&gt;` or view it in `Crumble &lt;https://algassert.com/crumble#circuit=Q(0,4&gt;`_0;Q(0,8)1;Q(0,12)2;Q(1,1)3;Q(1,3)4;Q(1,5)5;Q(1,7)6;Q(1,9)7;Q(1,11)8;Q(1,13)9;Q(2,0)10;Q(2,2)11;Q(2,4)12;Q(2,6)13;Q(2,8)14;Q(2,10)15;Q(2,12)16;Q(2,14)17;Q(3,1)18;Q(3,3)19;Q(3,5)20;Q(3,7)21;Q(3,9)22;Q(3,11)23;Q(3,13)24;Q(4,2)25;Q(4,4)26;Q(4,6)27;Q(4,8)28;Q(4,10)29;Q(4,12)30;Q(5,1)31;Q(5,3)32;Q(5,5)33;Q(5,7)34;Q(5,9)35;Q(5,11)36;Q(5,13)37;Q(6,2)38;Q(6,6)39;Q(6,10)40;Q(6,12)41;Q(6,14)42;Q(7,9)43;Q(7,11)44;Q(7,13)45;Q(8,8)46;Q(8,10)47;Q(8,12)48;Q(9,9)49;Q(9,11)50;Q(9,13)51;Q(10,10)52;Q(10,12)53;Q(10,14)54;Q(11,9)55;Q(11,11)56;Q(11,13)57;Q(12,8)58;Q(12,10)59;Q(12,12)60;Q(13,9)61;Q(13,11)62;Q(13,13)63;Q(14,12)64;RX_0_3_4_5_10_11_12_18_19_20_25_26_27_31_32_33_38;TICK;CX_12_4_25_18_27_20;CZ_11_3_26_19_38_31;TICK;CX_12_19_25_31_27_33;CZ_0_4;TICK;CX_10_3_12_5_25_19;CZ_11_4_26_20_38_32;TICK;CZ_11_18_26_32;TICK;CX_10_18_12_20_25_32;CZ_0_5_11_19_26_33;TICK;MX_0_10_11_12_25_26_27_38;DT(2,0,0)rec[-7];DT(2,4,0)rec[-5];DT(4,2,0)rec[-4];DT(4,6,0)rec[-2];TICK;RX_0_10_11_12_25_26_27_38;TICK;CX_12_4_25_18_27_20;CZ_11_3_26_19_38_31;TICK;CX_12_19_25_31_27_33;CZ_0_4;TICK;CX_10_3_12_5_25_19;CZ_11_4_26_20_38_32;TICK;CZ_11_18_26_32;TICK;CX_10_18_12_20_25_32;CZ_0_5_11_19_26_33;TICK;MX_0_10_11_12_25_26_27_38;DT(0,4,1)rec[-8]_rec[-16];DT(2,0,1)rec[-7]_rec[-15];DT(2,2,1)rec[-6]_rec[-14];DT(2,4,1)rec[-5]_rec[-13];DT(4,2,1)rec[-4]_rec[-12];DT(4,4,1)rec[-3]_rec[-11];DT(4,6,1)rec[-2]_rec[-10];DT(6,2,1)rec[-1]_rec[-9];TICK;RX_0_10_11_12_25_26_27_38;TICK;CX_12_4_25_18_27_20;CZ_11_3_26_19_38_31;TICK;CX_12_19_25_31_27_33;CZ_0_4;TICK;CX_10_3_12_5_25_19;CZ_11_4_26_20_38_32;TICK;CZ_11_18_26_32;TICK;CX_10_18_12_20_25_32;CZ_0_5_11_19_26_33;TICK;MX_0_10_11_12_25_26_27_38;DT(0,4,2)rec[-8]_rec[-16];DT(2,0,2)rec[-7]_rec[-15];DT(2,2,2)rec[-6]_rec[-14];DT(2,4,2)rec[-5]_rec[-13];DT(4,2,2)rec[-4]_rec[-12];DT(4,4,2)rec[-3]_rec[-11];DT(4,6,2)rec[-2]_rec[-10];DT(6,2,2)rec[-1]_rec[-9];TICK;RX_0_1_2_6_7_8_9_10_11_12_13_14_15_16_17_21_22_23_24_25_26_27_28_29_30_34_35_36_37_38_39_40_41_42_43_44_45_46_47_48_49_50_51_52_53_54_55_56_57_58_59_60_61_62_63_64;TICK;CX_12_4_14_6_16_8_25_18_27_20_29_22_41_36_47_43_53_50_59_55_64_62;CZ_11_3_13_5_15_7_17_9_26_19_28_21_30_23_38_31_39_33_40_35_42_37_48_44_52_49_54_51_60_56;TICK;CX_12_19_14_21_25_31_27_33_29_35;CZ_0_4_1_6_2_8_17_24_30_36_40_43_42_45_48_50_52_55_54_57_60_62;TICK;CX_10_3_12_5_14_7_16_9_25_19_27_21_29_23_41_37_47_44_53_51_59_56_64_63;CZ_11_4_13_6_15_8_26_20_28_22_30_24_38_32_39_34_40_36_46_43_48_45_52_50_58_55_60_57;TICK;CX_16_23_41_44_47_49_53_56_59_61;CZ_11_18_13_20_15_22_26_32_28_34;TICK;CX_10_18_12_20_14_22_16_24_25_32_27_34_29_36_41_45_47_50_53_57_59_62;CZ_0_5_1_7_2_9_11_19_13_21_15_23_26_33_28_35_30_37_40_44_46_49_48_51_52_56_58_61_60_63;TICK;MX_0_1_2_10_11_12_13_14_15_16_17_25_26_27_28_29_30_38_39_40_41_42_46_47_48_52_53_54_58_59_60_64;DT(0,4,3)rec[-32]_rec[-40];DT(2,0,3)rec[-29]_rec[-39];DT(2,2,3)rec[-28]_rec[-38];DT(2,4,3)rec[-27]_rec[-37];DT(2,8,3)rec[-25];DT(2,12,3)rec[-23];DT(4,2,3)rec[-21]_rec[-36];DT(4,4,3)rec[-20]_rec[-35];DT(4,6,3)rec[-19]_rec[-34];DT(4,10,3)rec[-17];DT(6,2,3)rec[-15]_rec[-33];DT(6,12,3)rec[-12];DT(8,10,3)rec[-9];DT(10,12,3)rec[-6];DT(12,10,3)rec[-3];DT(14,12,3)rec[-1];TICK;RX_0_1_2_10_11_12_13_14_15_16_17_25_26_27_28_29_30_38_39_40_41_42_46_47_48_52_53_54_58_59_60_64;TICK;CX_12_4_14_6_16_8_25_18_27_20_29_22_41_36_47_43_53_50_59_55_64_62;CZ_11_3_13_5_15_7_17_9_26_19_28_21_30_23_38_31_39_33_40_35_42_37_48_44_52_49_54_51_60_56;TICK;CX_12_19_14_21_25_31_27_33_29_35;CZ_0_4_1_6_2_8_17_24_30_36_40_43_42_45_48_50_52_55_54_57_60_62;TICK;CX_10_3_12_5_14_7_16_9_25_19_27_21_29_23_41_37_47_44_53_51_59_56_64_63;CZ_11_4_13_6_15_8_26_20_28_22_30_24_38_32_39_34_40_36_46_43_48_45_52_50_58_55_60_57;TICK;CX_16_23_41_44_47_49_53_56_59_61;CZ_11_18_13_20_15_22_26_32_28_34;TICK;CX_10_18_12_20_14_22_16_24_25_32_27_34_29_36_41_45_47_50_53_57_59_62;CZ_0_5_1_7_2_9_11_19_13_21_15_23_26_33_28_35_30_37_40_44_46_49_48_51_52_56_58_61_60_63;TICK;MX_0_1_2_10_11_12_13_14_15_16_17_25_26_27_28_29_30_38_39_40_41_42_46_47_48_52_53_54_58_59_60_64;DT(0,4,4)rec[-32]_rec[-64];DT(0,8,4)rec[-31]_rec[-63];DT(0,12,4)rec[-30]_rec[-62];DT(2,0,4)rec[-29]_rec[-61];DT(2,2,4)rec[-28]_rec[-60];DT(2,4,4)rec[-27]_rec[-59];DT(2,6,4)rec[-26]_rec[-58];DT(2,8,4)rec[-25]_rec[-57];DT(2,10,4)rec[-24]_rec[-56];DT(2,12,4)rec[-23]_rec[-55];DT(2,14,4)rec[-22]_rec[-54];DT(4,2,4)rec[-21]_rec[-53];DT(4,4,4)rec[-20]_rec[-52];DT(4,6,4)rec[-19]_rec[-51];DT(4,8,4)rec[-18]_rec[-50];DT(4,10,4)rec[-17]_rec[-49];DT(4,12,4)rec[-16]_rec[-48];DT(6,2,4)rec[-15]_rec[-47];DT(6,6,4)rec[-14]_rec[-46];DT(6,10,4)rec[-13]_rec[-45];DT(6,12,4)rec[-12]_rec[-44];DT(6,14,4)rec[-11]_rec[-43];DT(8,8,4)rec[-10]_rec[-42];DT(8,10,4)rec[-9]_rec[-41];DT(8,12,4)rec[-8]_rec[-40];DT(10,10,4)rec[-7]_rec[-39];DT(10,12,4)rec[-6]_rec[-38];DT(10,14,4)rec[-5]_rec[-37];DT(12,8,4)rec[-4]_rec[-36];DT(12,10,4)rec[-3]_rec[-35];DT(12,12,4)rec[-2]_rec[-34];DT(14,12,4)rec[-1]_rec[-33];TICK;RX_0_1_2_10_11_12_13_14_15_16_17_25_26_27_28_29_30_38_39_40_41_42_46_47_48_52_53_54_58_59_60_64;TICK;CX_12_4_14_6_16_8_25_18_27_20_29_22_41_36_47_43_53_50_59_55_64_62;CZ_11_3_13_5_15_7_17_9_26_19_28_21_30_23_38_31_39_33_40_35_42_37_48_44_52_49_54_51_60_56;TICK;CX_12_19_14_21_25_31_27_33_29_35;CZ_0_4_1_6_2_8_17_24_30_36_40_43_42_45_48_50_52_55_54_57_60_62;TICK;CX_10_3_12_5_14_7_16_9_25_19_27_21_29_23_41_37_47_44_53_51_59_56_64_63;CZ_11_4_13_6_15_8_26_20_28_22_30_24_38_32_39_34_40_36_46_43_48_45_52_50_58_55_60_57;TICK;CX_16_23_41_44_47_49_53_56_59_61;CZ_11_18_13_20_15_22_26_32_28_34;TICK;CX_10_18_12_20_14_22_16_24_25_32_27_34_29_36_41_45_47_50_53_57_59_62;CZ_0_5_1_7_2_9_11_19_13_21_15_23_26_33_28_35_30_37_40_44_46_49_48_51_52_56_58_61_60_63;TICK;MX_0_1_2_3_4_5_6_7_8_9_10_11_12_13_14_15_16_17_18_19_20_21_22_23_24_25_26_27_28_29_30_31_32_33_34_35_36_37_38_39_40_41_42_43_44_45_46_47_48_52_53_54_58_59_60_64;DT(0,4,5)rec[-56]_rec[-88];DT(0,8,5)rec[-55]_rec[-87];DT(0,12,5)rec[-54]_rec[-86];DT(2,0,5)rec[-46]_rec[-85];DT(2,2,5)rec[-45]_rec[-84];DT(2,4,5)rec[-44]_rec[-83];DT(2,6,5)rec[-43]_rec[-82];DT(2,8,5)rec[-42]_rec[-81];DT(2,10,5)rec[-41]_rec[-80];DT(2,12,5)rec[-40]_rec[-79];DT(2,14,5)rec[-39]_rec[-78];DT(3,1,5)rec[-38]_rec[-46]_rec[-53];DT(3,5,5)rec[-36]_rec[-37]_rec[-44]_rec[-51]_rec[-52];DT(3,9,5)rec[-34]_rec[-35]_rec[-42]_rec[-49]_rec[-50];DT(1,11,5)rec[-32]_rec[-33]_rec[-40]_rec[-47]_rec[-48];DT(4,2,5)rec[-31]_rec[-77];DT(4,4,5)rec[-30]_rec[-76];DT(4,6,5)rec[-29]_rec[-75];DT(4,8,5)rec[-28]_rec[-74];DT(4,10,5)rec[-27]_rec[-73];DT(4,12,5)rec[-26]_rec[-72];DT(5,3,5)rec[-24]_rec[-25]_rec[-31]_rec[-37]_rec[-38];DT(5,5,5)rec[-22]_rec[-23]_rec[-29]_rec[-35]_rec[-36];DT(3,11,5)rec[-20]_rec[-21]_rec[-27]_rec[-33]_rec[-34];DT(6,2,5)rec[-18]_rec[-71];DT(6,6,5)rec[-17]_rec[-70];DT(6,10,5)rec[-16]_rec[-69];DT(6,12,5)rec[-15]_rec[-68];DT(6,14,5)rec[-14]_rec[-67];DT(5,11,5)rec[-11]_rec[-12]_rec[-15]_rec[-19]_rec[-20];DT(8,8,5)rec[-10]_rec[-66];DT(8,10,5)rec[-9]_rec[-65];DT(8,12,5)rec[-8]_rec[-64];DT(10,10,5)rec[-7]_rec[-63];DT(10,12,5)rec[-6]_rec[-62];DT(10,14,5)rec[-5]_rec[-61];DT(12,8,5)rec[-4]_rec[-60];DT(12,10,5)rec[-3]_rec[-59];DT(12,12,5)rec[-2]_rec[-58];DT(14,12,5)rec[-1]_rec[-57];TICK;RX_47_52_53_54_58_59_60_64;TICK;CX_53_50_59_55_64_62;CZ_52_49_54_51_60_56;TICK;CX_47_49;CZ_52_55_54_57_60_62;TICK;CX_53_51_59_56_64_63;CZ_52_50_58_55_60_57;TICK;CX_53_56_59_61;TICK;CX_47_50_53_57_59_62;CZ_52_56_58_61_60_63;TICK;MX_47_52_53_54_58_59_60_64;DT(8,10,6)rec[-8]_rec[-17]_rec[-20]_rec[-21];DT(10,10,6)rec[-7]_rec[-15];DT(10,12,6)rec[-6]_rec[-14];DT(10,14,6)rec[-5]_rec[-13];DT(12,8,6)rec[-4]_rec[-12];DT(12,10,6)rec[-3]_rec[-11];DT(12,12,6)rec[-2]_rec[-10];DT(14,12,6)rec[-1]_rec[-9];TICK;RX_47_52_53_54_58_59_60_64;TICK;CX_53_50_59_55_64_62;CZ_52_49_54_51_60_56;TICK;CX_47_49;CZ_52_55_54_57_60_62;TICK;CX_53_51_59_56_64_63;CZ_52_50_58_55_60_57;TICK;CX_53_56_59_61;TICK;CX_47_50_53_57_59_62;CZ_52_56_58_61_60_63;TICK;MX_47_52_53_54_58_59_60_64;DT(8,10,7)rec[-8]_rec[-16];DT(10,10,7)rec[-7]_rec[-15];DT(10,12,7)rec[-6]_rec[-14];DT(10,14,7)rec[-5]_rec[-13];DT(12,8,7)rec[-4]_rec[-12];DT(12,10,7)rec[-3]_rec[-11];DT(12,12,7)rec[-2]_rec[-10];DT(14,12,7)rec[-1]_rec[-9];TICK;RX_47_52_53_54_58_59_60_64;TICK;CX_53_50_59_55_64_62;CZ_52_49_54_51_60_56;TICK;CX_47_49;CZ_52_55_54_57_60_62;TICK;CX_53_51_59_56_64_63;CZ_52_50_58_55_60_57;TICK;CX_53_56_59_61;TICK;CX_47_50_53_57_59_62;CZ_52_56_58_61_60_63;TICK;MX_47_49_50_51_52_53_54_55_56_57_58_59_60_61_62_63_64;DT(8,10,8)rec[-17]_rec[-25];DT(9,9,8)rec[-15]_rec[-16]_rec[-17];DT(10,10,8)rec[-13]_rec[-24];DT(10,12,8)rec[-12]_rec[-23];DT(10,14,8)rec[-11]_rec[-22];DT(11,13,8)rec[-8]_rec[-9]_rec[-12]_rec[-14]_rec[-15];DT(12,8,8)rec[-7]_rec[-21];DT(12,10,8)rec[-6]_rec[-20];DT(12,12,8)rec[-5]_rec[-19];DT(13,9,8)rec[-3]_rec[-4]_rec[-6]_rec[-9]_rec[-10];DT(13,11,8)rec[-1]_rec[-2]_rec[-3];DT(14,12,8)rec[-1]_rec[-18];OI(0)rec[-3]_rec[-9]_rec[-15]_rec[-45]_rec[-53]_rec[-66]_rec[-67]_rec[-68]_rec[-69]_rec[-70]_rec[-71]). # noqa: E501</span><span class="w">
+</span></pre></div></div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span class="kn">from</span><span class="w"> </span><span class="nn">tqec</span><span class="w"> </span><span class="kn">import</span> <span class="n">NoiseModel</span><span class="p">,</span> <span class="n">compile_block_graph</span><span class="w">
+</span><span class="w">
+</span><span class="n">graph</span> <span class="o">=</span> <a class="sphx-glr-backref-module-tqec-gallery sphx-glr-backref-type-py-function reference internal" href="../_autosummary/tqec.gallery.move_rotation.html#tqec.gallery.move_rotation" title="tqec.gallery.move_rotation"><span class="n">move_rotation</span></a><span class="p">(</span><a class="sphx-glr-backref-module-tqec sphx-glr-backref-type-py-class sphx-glr-backref-instance reference internal" href="../_autosummary/tqec.utils.Basis.html#tqec.utils.Basis" title="tqec.Basis"><span class="n">Basis</span></a><span class="o">.</span><span class="n">X</span><span class="p">)</span><span class="w">
+</span><span class="n">compiled_graph</span> <span class="o">=</span> <span class="n">compile_block_graph</span><span class="p">(</span><span class="n">graph</span><span class="p">)</span><span class="w">
+</span><span class="n">circuit</span> <span class="o">=</span> <span class="n">compiled_graph</span><span class="o">.</span><span class="n">generate_stim_circuit</span><span class="p">(</span><span class="w">
+</span>    <span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">noise_model</span><span class="o">=</span><span class="n">NoiseModel</span><span class="o">.</span><span class="n">uniform_depolarizing</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="mf">0.001</span><span class="p">)</span><span class="w">
+</span><span class="p">)</span><span class="w">
+</span><span class="w">
+</span><span class="w">
+</span><span class="c1"># ### Simulation</span><span class="w">
+</span><span class="c1">#</span><span class="w">
+</span><span class="c1"># Here we show the simulation results of both $X$-basis and $Z$-basis</span><span class="w">
+</span><span class="c1"># experiments under a **uniform depolarizing** noise model.</span><span class="w">
+</span><span class="c1">#</span><span class="w">
+</span><span class="c1"># &lt;details&gt;&lt;summary&gt;Click to show the full code used for simulation&lt;/summary&gt;</span><span class="w">
+</span><span class="c1">#</span><span class="w">
+</span><span class="c1"># ```py</span><span class="w">
+</span><span class="c1"># from multiprocessing import cpu_count</span><span class="w">
+</span><span class="c1"># from pathlib import Path</span><span class="w">
+</span><span class="c1">#</span><span class="w">
+</span><span class="c1"># import matplotlib.pyplot as plt</span><span class="w">
+</span><span class="c1"># import numpy</span><span class="w">
+</span><span class="c1"># import sinter</span><span class="w">
+</span><span class="c1">#</span><span class="w">
+</span><span class="c1"># from tqec.gallery.memory import memory</span><span class="w">
+</span><span class="c1"># from tqec.gallery.move_rotation import move_rotation</span><span class="w">
+</span><span class="c1"># from tqec import NoiseModel</span><span class="w">
+</span><span class="c1"># from tqec.simulation.plotting.inset import plot_observable_as_inset</span><span class="w">
+</span><span class="c1"># from tqec.simulation.simulation import start_simulation_using_sinter</span><span class="w">
+</span><span class="c1"># from tqec.utils.enums import Basis</span><span class="w">
+</span><span class="c1">#</span><span class="w">
+</span><span class="c1"># SAVE_DIR = Path(&quot;results&quot;)</span><span class="w">
+</span><span class="c1">#</span><span class="w">
+</span><span class="c1">#</span><span class="w">
+</span><span class="c1"># def generate_graphs(support_observable_basis: Basis) -&gt; None:</span><span class="w">
+</span><span class="c1">#     block_graph = move_rotation(support_observable_basis)</span><span class="w">
+</span><span class="c1">#     zx_graph = block_graph.to_zx_graph()</span><span class="w">
+</span><span class="c1">#</span><span class="w">
+</span><span class="c1">#     correlation_surfaces = block_graph.find_correlation_surfaces()</span><span class="w">
+</span><span class="c1">#</span><span class="w">
+</span><span class="c1">#     stats = start_simulation_using_sinter(</span><span class="w">
+</span><span class="c1">#         block_graph,</span><span class="w">
+</span><span class="c1">#         range(1, 4),</span><span class="w">
+</span><span class="c1">#         list(numpy.logspace(-4, -1, 10)),</span><span class="w">
+</span><span class="c1">#         NoiseModel.uniform_depolarizing,</span><span class="w">
+</span><span class="c1">#         manhattan_radius=2,</span><span class="w">
+</span><span class="c1">#         observables=correlation_surfaces,</span><span class="w">
+</span><span class="c1">#         num_workers=cpu_count(),</span><span class="w">
+</span><span class="c1">#         max_shots=1_000_000,</span><span class="w">
+</span><span class="c1">#         max_errors=5_000,</span><span class="w">
+</span><span class="c1">#         decoders=[&quot;pymatching&quot;],</span><span class="w">
+</span><span class="c1">#         print_progress=True,</span><span class="w">
+</span><span class="c1">#         save_resume_filepath=Path(</span><span class="w">
+</span><span class="c1">#             f&quot;../_examples_database/move_rotation_stats_{support_observable_basis.value}.csv&quot;</span><span class="w">
+</span><span class="c1">#         ),</span><span class="w">
+</span><span class="c1">#         database_path=Path(&quot;../_examples_database/database.pkl&quot;),</span><span class="w">
+</span><span class="c1">#     )</span><span class="w">
+</span><span class="c1">#</span><span class="w">
+</span><span class="c1">#     for i, stat in enumerate(stats):</span><span class="w">
+</span><span class="c1">#         _, ax = plt.subplots()</span><span class="w">
+</span><span class="c1">#         sinter.plot_error_rate(</span><span class="w">
+</span><span class="c1">#             ax=ax,</span><span class="w">
+</span><span class="c1">#             stats=stat,</span><span class="w">
+</span><span class="c1">#             x_func=lambda stat: stat.json_metadata[&quot;p&quot;],</span><span class="w">
+</span><span class="c1">#             failure_units_per_shot_func=lambda stat: stat.json_metadata[&quot;d&quot;],</span><span class="w">
+</span><span class="c1">#             group_func=lambda stat: stat.json_metadata[&quot;d&quot;],</span><span class="w">
+</span><span class="c1">#         )</span><span class="w">
+</span><span class="c1">#         plot_observable_as_inset(ax, zx_graph, correlation_surfaces[i])</span><span class="w">
+</span><span class="c1">#         ax.grid(axis=&quot;both&quot;)</span><span class="w">
+</span><span class="c1">#         ax.legend()</span><span class="w">
+</span><span class="c1">#         ax.loglog()</span><span class="w">
+</span><span class="c1">#         ax.set_title(&quot;Move Rotation Error Rate&quot;)</span><span class="w">
+</span><span class="c1">#         ax.set_xlabel(&quot;Physical Error Rate&quot;)</span><span class="w">
+</span><span class="c1">#         ax.set_ylabel(&quot;Logical Error Rate(per round)&quot;)</span><span class="w">
+</span><span class="c1">#         fig.savefig(</span><span class="w">
+</span><span class="c1">#             SAVE_DIR</span><span class="w">
+</span><span class="c1">#             / f&quot;move_rotation_result_{support_observable_basis}_observable_{i}.png&quot;</span><span class="w">
+</span><span class="c1">#         )</span><span class="w">
+</span><span class="c1">#</span><span class="w">
+</span><span class="c1">#</span><span class="w">
+</span><span class="c1"># def main():</span><span class="w">
+</span><span class="c1">#     SAVE_DIR.mkdir(exist_ok=True)</span><span class="w">
+</span><span class="c1">#     generate_graphs(Basis.Z)</span><span class="w">
+</span><span class="c1">#     generate_graphs(Basis.X)</span><span class="w">
+</span><span class="c1">#</span><span class="w">
+</span><span class="c1">#</span><span class="w">
+</span><span class="c1"># if __name__ == &quot;__main__&quot;:</span><span class="w">
+</span><span class="c1">#     main()</span><span class="w">
+</span><span class="c1">#</span><span class="w">
+</span><span class="c1">#</span><span class="w">
+</span><span class="c1"># ```</span><span class="w">
+</span><span class="c1">#</span><span class="w">
+</span><span class="c1"># &lt;/details&gt;</span><span class="w">
+</span><span class="c1">#</span><span class="w">
+</span></pre></div></div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span class="kn">from</span><span class="w"> </span><span class="nn">multiprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">cpu_count</span><span class="w">
+</span><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span><span class="w">
+</span><span class="w">
+</span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib</span><span class="nn">.</span><span class="nn">pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span><span class="w">
+</span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w">
+</span><span class="kn">import</span><span class="w"> </span><span class="nn">sinter</span><span class="w">
+</span><span class="w">
+</span><span class="kn">from</span><span class="w"> </span><span class="nn">tqec</span><span class="w"> </span><span class="kn">import</span> <span class="n">NoiseModel</span><span class="w">
+</span><span class="kn">from</span><span class="w"> </span><span class="nn">tqec</span><span class="nn">.</span><span class="nn">gallery</span><span class="nn">.</span><a class="sphx-glr-backref-module-tqec-gallery sphx-glr-backref-type-py-function reference internal" href="../_autosummary/tqec.gallery.move_rotation.html#tqec.gallery.move_rotation" title="tqec.gallery.move_rotation"><span class="nn">move_rotation</span></a><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-tqec-gallery sphx-glr-backref-type-py-function reference internal" href="../_autosummary/tqec.gallery.move_rotation.html#tqec.gallery.move_rotation" title="tqec.gallery.move_rotation"><span class="n">move_rotation</span></a><span class="w">
+</span><span class="kn">from</span><span class="w"> </span><span class="nn">tqec</span><span class="nn">.</span><span class="nn">simulation</span><span class="nn">.</span><span class="nn">plotting</span><span class="nn">.</span><span class="nn">inset</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-tqec-simulation sphx-glr-backref-type-py-function reference internal" href="../_autosummary/tqec.simulation.plot_observable_as_inset.html#tqec.simulation.plot_observable_as_inset" title="tqec.simulation.plot_observable_as_inset"><span class="n">plot_observable_as_inset</span></a><span class="w">
+</span><span class="kn">from</span><span class="w"> </span><span class="nn">tqec</span><span class="nn">.</span><span class="nn">simulation</span><span class="nn">.</span><span class="nn">simulation</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-tqec-simulation sphx-glr-backref-type-py-function reference internal" href="../_autosummary/tqec.simulation.start_simulation_using_sinter.html#tqec.simulation.start_simulation_using_sinter" title="tqec.simulation.start_simulation_using_sinter"><span class="n">start_simulation_using_sinter</span></a><span class="w">
+</span><span class="kn">from</span><span class="w"> </span><span class="nn">tqec</span><span class="nn">.</span><span class="nn">utils</span><span class="nn">.</span><span class="nn">enums</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-tqec sphx-glr-backref-type-py-class sphx-glr-backref-instance reference internal" href="../_autosummary/tqec.utils.Basis.html#tqec.utils.Basis" title="tqec.Basis"><span class="n">Basis</span></a><span class="w">
+</span><span class="w">
+</span><span class="w">
+</span><span class="k">def</span><span class="w"> </span><span class="nf">generate_graphs</span><span class="p">(</span><span class="n">support_observable_basis</span><span class="p">:</span> <a class="sphx-glr-backref-module-tqec sphx-glr-backref-type-py-class sphx-glr-backref-instance reference internal" href="../_autosummary/tqec.utils.Basis.html#tqec.utils.Basis" title="tqec.Basis"><span class="n">Basis</span></a><span class="p">)</span> <span class="o">-</span><span class="o">&gt;</span> <span class="kc">None</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;Generate the logical error-rate graphs corresponding to the provided basis.&quot;&quot;&quot;</span><span class="w">
+</span>    <span class="n">block_graph</span> <span class="o">=</span> <a class="sphx-glr-backref-module-tqec-gallery sphx-glr-backref-type-py-function reference internal" href="../_autosummary/tqec.gallery.move_rotation.html#tqec.gallery.move_rotation" title="tqec.gallery.move_rotation"><span class="n">move_rotation</span></a><span class="p">(</span><span class="n">support_observable_basis</span><span class="p">)</span><span class="w">
+</span>    <span class="n">zx_graph</span> <span class="o">=</span> <span class="n">block_graph</span><span class="o">.</span><span class="n">to_zx_graph</span><span class="p">(</span><span class="p">)</span><span class="w">
+</span><span class="w">
+</span>    <span class="n">correlation_surfaces</span> <span class="o">=</span> <span class="n">block_graph</span><span class="o">.</span><span class="n">find_correlation_surfaces</span><span class="p">(</span><span class="p">)</span><span class="w">
+</span><span class="w">
+</span>    <span class="n">stats</span> <span class="o">=</span> <a class="sphx-glr-backref-module-tqec-simulation sphx-glr-backref-type-py-function reference internal" href="../_autosummary/tqec.simulation.start_simulation_using_sinter.html#tqec.simulation.start_simulation_using_sinter" title="tqec.simulation.start_simulation_using_sinter"><span class="n">start_simulation_using_sinter</span></a><span class="p">(</span><span class="w">
+</span>        <span class="n">block_graph</span><span class="p">,</span><span class="w">
+</span>        <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span><span class="p">,</span><span class="w">
+</span>        <span class="nb">list</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span><span class="p">)</span><span class="p">,</span><span class="w">
+</span>        <span class="n">NoiseModel</span><span class="o">.</span><span class="n">uniform_depolarizing</span><span class="p">,</span><span class="w">
+</span>        <span class="n">manhattan_radius</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="w">
+</span>        <span class="n">observables</span><span class="o">=</span><span class="n">correlation_surfaces</span><span class="p">,</span><span class="w">
+</span>        <span class="n">num_workers</span><span class="o">=</span><span class="n">cpu_count</span><span class="p">(</span><span class="p">)</span><span class="p">,</span><span class="w">
+</span>        <span class="n">max_shots</span><span class="o">=</span><span class="mi">1_000_000</span><span class="p">,</span><span class="w">
+</span>        <span class="n">max_errors</span><span class="o">=</span><span class="mi">5_000</span><span class="p">,</span><span class="w">
+</span>        <span class="n">decoders</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;</span><span class="s2">pymatching</span><span class="s2">&quot;</span><span class="p">]</span><span class="p">,</span><span class="w">
+</span>        <span class="c1"># note that save_resume_filepath and database_path can help reduce the time taken</span><span class="w">
+</span>        <span class="c1"># by the simulation after the database and result statistics have been saved to</span><span class="w">
+</span>        <span class="c1"># the chosen path</span><span class="w">
+</span>        <span class="n">save_resume_filepath</span><span class="o">=</span><span class="n">Path</span><span class="p">(</span><span class="w">
+</span>            <span class="sa">f</span><span class="s2">&quot;</span><span class="s2">../_examples_database/move_rotation_stats_</span><span class="si">{</span><span class="n">support_observable_basis</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2">.csv</span><span class="s2">&quot;</span><span class="w">
+</span>        <span class="p">)</span><span class="p">,</span><span class="w">
+</span>        <span class="n">database_path</span><span class="o">=</span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;</span><span class="s2">../_examples_database/database.pkl</span><span class="s2">&quot;</span><span class="p">)</span><span class="p">,</span><span class="w">
+</span>    <span class="p">)</span><span class="w">
+</span><span class="w">
+</span>    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">stat</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">stats</span><span class="p">)</span><span class="p">:</span><span class="w">
+</span>        <span class="n">_</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="p">)</span><span class="w">
+</span>        <span class="n">sinter</span><span class="o">.</span><span class="n">plot_error_rate</span><span class="p">(</span><span class="w">
+</span>            <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span><span class="w">
+</span>            <span class="n">stats</span><span class="o">=</span><span class="n">stat</span><span class="p">,</span><span class="w">
+</span>            <span class="n">x_func</span><span class="o">=</span><span class="k">lambda</span> <span class="n">stat</span><span class="p">:</span> <span class="n">stat</span><span class="o">.</span><span class="n">json_metadata</span><span class="p">[</span><span class="s2">&quot;</span><span class="s2">p</span><span class="s2">&quot;</span><span class="p">]</span><span class="p">,</span><span class="w">
+</span>            <span class="n">failure_units_per_shot_func</span><span class="o">=</span><span class="k">lambda</span> <span class="n">stat</span><span class="p">:</span> <span class="n">stat</span><span class="o">.</span><span class="n">json_metadata</span><span class="p">[</span><span class="s2">&quot;</span><span class="s2">d</span><span class="s2">&quot;</span><span class="p">]</span><span class="p">,</span><span class="w">
+</span>            <span class="n">group_func</span><span class="o">=</span><span class="k">lambda</span> <span class="n">stat</span><span class="p">:</span> <span class="n">stat</span><span class="o">.</span><span class="n">json_metadata</span><span class="p">[</span><span class="s2">&quot;</span><span class="s2">d</span><span class="s2">&quot;</span><span class="p">]</span><span class="p">,</span><span class="w">
+</span>        <span class="p">)</span><span class="w">
+</span>        <a class="sphx-glr-backref-module-tqec-simulation sphx-glr-backref-type-py-function reference internal" href="../_autosummary/tqec.simulation.plot_observable_as_inset.html#tqec.simulation.plot_observable_as_inset" title="tqec.simulation.plot_observable_as_inset"><span class="n">plot_observable_as_inset</span></a><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">zx_graph</span><span class="p">,</span> <span class="n">correlation_surfaces</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="p">)</span><span class="w">
+</span>        <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s2">&quot;</span><span class="s2">both</span><span class="s2">&quot;</span><span class="p">)</span><span class="w">
+</span>        <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="p">)</span><span class="w">
+</span>        <span class="n">ax</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="p">)</span><span class="w">
+</span>        <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;</span><span class="s2">Move Rotation Error Rate</span><span class="s2">&quot;</span><span class="p">)</span><span class="w">
+</span>        <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;</span><span class="s2">Physical Error Rate</span><span class="s2">&quot;</span><span class="p">)</span><span class="w">
+</span>        <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;</span><span class="s2">Logical Error Rate(per round)</span><span class="s2">&quot;</span><span class="p">)</span><span class="w">
+</span><span class="w">
+</span><span class="w">
+</span><span class="c1"># #### Z Basis</span><span class="w">
+</span></pre></div></div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span class="n">generate_graphs</span><span class="p">(</span><a class="sphx-glr-backref-module-tqec sphx-glr-backref-type-py-class sphx-glr-backref-instance reference internal" href="../_autosummary/tqec.utils.Basis.html#tqec.utils.Basis" title="tqec.Basis"><span class="n">Basis</span></a><span class="o">.</span><span class="n">Z</span><span class="p">)</span><span class="w">
+</span><span class="w">
+</span><span class="w">
+</span><span class="c1"># #### X Basis</span><span class="w">
+</span></pre></div></div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span class="n">generate_graphs</span><span class="p">(</span><a class="sphx-glr-backref-module-tqec sphx-glr-backref-type-py-class sphx-glr-backref-instance reference internal" href="../_autosummary/tqec.utils.Basis.html#tqec.utils.Basis" title="tqec.Basis"><span class="n">Basis</span></a><span class="o">.</span><span class="n">X</span><span class="p">)</span><span class="w">
+</span></pre></div></div>
+<div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-move-rotation-py">
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../_downloads/89be2e7c79e5c28ce9009c430c290a9c/move_rotation.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">move_rotation.ipynb</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-python docutils container">
+<p><a class="reference download internal" download="" href="../_downloads/c52df8fb178afd42050f08590525f2df/move_rotation.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">move_rotation.py</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-zip docutils container">
+<p><a class="reference download internal" download="" href="../_downloads/25ada3ffadb2c0e3227732d488048904/move_rotation.zip"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">zipped:</span> <span class="pre">move_rotation.zip</span></code></a></p>
+</div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="memory.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Logical Memory</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="steane_encoding.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Steane Encoding</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../_sources/auto_examples/move_rotation.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=64cc4de3f052d77215f0"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=64cc4de3f052d77215f0"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2024 - 2026, TQEC Community.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.22.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
