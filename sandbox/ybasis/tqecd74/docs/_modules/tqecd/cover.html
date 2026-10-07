@@ -458,8 +458,6 @@
 <span class="sd">        ValueError: if ``pivot_direction`` is not ``"lowest"`` or ``"highest"``.</span>
 <span class="sd">    """</span>
 
-<div class="viewcode-block" id="BinaryVectorBasis.__init__">
-<a class="viewcode-back" href="../../_autosummary/tqecd.cover.BinaryVectorBasis.html#tqecd.cover.BinaryVectorBasis.__init__">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pivot_direction</span><span class="p">:</span> <span class="n">PivotDirection</span> <span class="o">=</span> <span class="s2">"highest"</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">pivot_direction</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">"lowest"</span><span class="p">,</span> <span class="s2">"highest"</span><span class="p">):</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
@@ -467,14 +465,15 @@
                 <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">pivot_direction</span><span class="si">!r}</span><span class="s2">."</span>
             <span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_pivot_direction</span> <span class="o">=</span> <span class="n">pivot_direction</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_basis</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{}</span></div>
-
+        <span class="bp">self</span><span class="o">.</span><span class="n">_basis</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{}</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">_pivot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vector</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pivot_direction</span> <span class="o">==</span> <span class="s2">"highest"</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">vector</span><span class="o">.</span><span class="n">bit_length</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span>
         <span class="k">return</span> <span class="p">(</span><span class="n">vector</span> <span class="o">&amp;</span> <span class="o">-</span><span class="n">vector</span><span class="p">)</span><span class="o">.</span><span class="n">bit_length</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span>
 
+<div class="viewcode-block" id="BinaryVectorBasis.reduce">
+<a class="viewcode-back" href="../../_autosummary/tqecd.cover.BinaryVectorBasis.html#tqecd.cover.BinaryVectorBasis.reduce">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">reduce</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vector</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">combination</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">"""Reduce a vector and its source-combination mask against the basis."""</span>
         <span class="k">if</span> <span class="n">vector</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">combination</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
@@ -488,20 +487,27 @@
             <span class="n">basis_vector</span><span class="p">,</span> <span class="n">basis_combination</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_basis</span><span class="p">[</span><span class="n">pivot</span><span class="p">]</span>
             <span class="n">vector</span> <span class="o">^=</span> <span class="n">basis_vector</span>
             <span class="n">combination</span> <span class="o">^=</span> <span class="n">basis_combination</span>
-        <span class="k">return</span> <span class="n">vector</span><span class="p">,</span> <span class="n">combination</span>
+        <span class="k">return</span> <span class="n">vector</span><span class="p">,</span> <span class="n">combination</span></div>
 
+
+<div class="viewcode-block" id="BinaryVectorBasis.add">
+<a class="viewcode-back" href="../../_autosummary/tqecd.cover.BinaryVectorBasis.html#tqecd.cover.BinaryVectorBasis.add">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vector</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">combination</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">"""Add ``vector`` and return whether it is independent of the current basis."""</span>
         <span class="n">remainder</span><span class="p">,</span> <span class="n">reduced_combination</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">reduce</span><span class="p">(</span><span class="n">vector</span><span class="p">,</span> <span class="n">combination</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">remainder</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">False</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_basis</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_pivot</span><span class="p">(</span><span class="n">remainder</span><span class="p">)]</span> <span class="o">=</span> <span class="p">(</span><span class="n">remainder</span><span class="p">,</span> <span class="n">reduced_combination</span><span class="p">)</span>
-        <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">return</span> <span class="kc">True</span></div>
 
+
+<div class="viewcode-block" id="BinaryVectorBasis.decompose">
+<a class="viewcode-back" href="../../_autosummary/tqecd.cover.BinaryVectorBasis.html#tqecd.cover.BinaryVectorBasis.decompose">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">decompose</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vector</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">"""Return a source mask whose vectors XOR to ``vector``, or ``None``."""</span>
         <span class="n">remainder</span><span class="p">,</span> <span class="n">combination</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">reduce</span><span class="p">(</span><span class="n">vector</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">combination</span> <span class="k">if</span> <span class="n">remainder</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="kc">None</span></div>
+</div>
 
 
 

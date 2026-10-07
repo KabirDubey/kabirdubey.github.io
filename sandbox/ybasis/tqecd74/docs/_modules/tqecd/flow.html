@@ -579,30 +579,48 @@
             <span class="n">total_number_of_measurements</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">total_number_of_measurements</span><span class="p">,</span>
         <span class="p">)</span>
 
+<div class="viewcode-block" id="FragmentFlows.remove_creation">
+<a class="viewcode-back" href="../../_autosummary/tqecd.flow.FragmentFlows.html#tqecd.flow.FragmentFlows.remove_creation">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">remove_creation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">creation</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">creation</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">index</span><span class="p">)</span></div>
 
+
+<div class="viewcode-block" id="FragmentFlows.remove_destruction">
+<a class="viewcode-back" href="../../_autosummary/tqecd.flow.FragmentFlows.html#tqecd.flow.FragmentFlows.remove_destruction">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">remove_destruction</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">destruction</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">destruction</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">index</span><span class="p">)</span></div>
 
+
+<div class="viewcode-block" id="FragmentFlows.remove_creations">
+<a class="viewcode-back" href="../../_autosummary/tqecd.flow.FragmentFlows.html#tqecd.flow.FragmentFlows.remove_creations">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">remove_creations</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">indices</span><span class="p">:</span> <span class="n">ty</span><span class="o">.</span><span class="n">Iterable</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">indices</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">remove_creation</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">remove_creation</span><span class="p">(</span><span class="n">i</span><span class="p">)</span></div>
 
+
+<div class="viewcode-block" id="FragmentFlows.remove_destructions">
+<a class="viewcode-back" href="../../_autosummary/tqecd.flow.FragmentFlows.html#tqecd.flow.FragmentFlows.remove_destructions">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">remove_destructions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">indices</span><span class="p">:</span> <span class="n">ty</span><span class="o">.</span><span class="n">Iterable</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">indices</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">remove_destruction</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">remove_destruction</span><span class="p">(</span><span class="n">i</span><span class="p">)</span></div>
 
+
+<div class="viewcode-block" id="FragmentFlows.without_trivial_flows">
+<a class="viewcode-back" href="../../_autosummary/tqecd.flow.FragmentFlows.html#tqecd.flow.FragmentFlows.without_trivial_flows">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">without_trivial_flows</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FragmentFlows</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">FragmentFlows</span><span class="p">(</span>
             <span class="n">creation</span><span class="o">=</span><span class="p">[</span><span class="n">bs</span> <span class="k">for</span> <span class="n">bs</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">creation</span> <span class="k">if</span> <span class="n">bs</span><span class="o">.</span><span class="n">is_trivial</span><span class="p">()],</span>
             <span class="n">destruction</span><span class="o">=</span><span class="p">[</span><span class="n">bs</span> <span class="k">for</span> <span class="n">bs</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">destruction</span> <span class="k">if</span> <span class="n">bs</span><span class="o">.</span><span class="n">is_trivial</span><span class="p">()],</span>
             <span class="n">total_number_of_measurements</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">total_number_of_measurements</span><span class="p">,</span>
-        <span class="p">)</span>
+        <span class="p">)</span></div>
 
+
+<div class="viewcode-block" id="FragmentFlows.try_merge_anticommuting_flows">
+<a class="viewcode-back" href="../../_autosummary/tqecd.flow.FragmentFlows.html#tqecd.flow.FragmentFlows.try_merge_anticommuting_flows">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">try_merge_anticommuting_flows</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">_try_merge_anticommuting_flows_inplace</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">creation</span><span class="p">)</span>
         <span class="n">_try_merge_anticommuting_flows_inplace</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">destruction</span><span class="p">)</span></div>
+</div>
 
 
 
@@ -645,23 +663,38 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">total_number_of_measurements</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
         <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">flow</span><span class="o">.</span><span class="n">total_number_of_measurements</span> <span class="k">for</span> <span class="n">flow</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">fragment_flows</span><span class="p">)</span>
 
+<div class="viewcode-block" id="FragmentLoopFlows.remove_creation">
+<a class="viewcode-back" href="../../_autosummary/tqecd.flow.FragmentLoopFlows.html#tqecd.flow.FragmentLoopFlows.remove_creation">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">remove_creation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">creation</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">creation</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">index</span><span class="p">)</span></div>
 
+
+<div class="viewcode-block" id="FragmentLoopFlows.remove_destruction">
+<a class="viewcode-back" href="../../_autosummary/tqecd.flow.FragmentLoopFlows.html#tqecd.flow.FragmentLoopFlows.remove_destruction">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">remove_destruction</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">destruction</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">destruction</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">index</span><span class="p">)</span></div>
 
+
+<div class="viewcode-block" id="FragmentLoopFlows.remove_creations">
+<a class="viewcode-back" href="../../_autosummary/tqecd.flow.FragmentLoopFlows.html#tqecd.flow.FragmentLoopFlows.remove_creations">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">remove_creations</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">indices</span><span class="p">:</span> <span class="n">ty</span><span class="o">.</span><span class="n">Iterable</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">indices</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">remove_creation</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">remove_creation</span><span class="p">(</span><span class="n">i</span><span class="p">)</span></div>
 
+
+<div class="viewcode-block" id="FragmentLoopFlows.remove_destructions">
+<a class="viewcode-back" href="../../_autosummary/tqecd.flow.FragmentLoopFlows.html#tqecd.flow.FragmentLoopFlows.remove_destructions">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">remove_destructions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">indices</span><span class="p">:</span> <span class="n">ty</span><span class="o">.</span><span class="n">Iterable</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">indices</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">remove_destruction</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">remove_destruction</span><span class="p">(</span><span class="n">i</span><span class="p">)</span></div>
 
+
+<div class="viewcode-block" id="FragmentLoopFlows.try_merge_anticommuting_flows">
+<a class="viewcode-back" href="../../_autosummary/tqecd.flow.FragmentLoopFlows.html#tqecd.flow.FragmentLoopFlows.try_merge_anticommuting_flows">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">try_merge_anticommuting_flows</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">_try_merge_anticommuting_flows_inplace</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">creation</span><span class="p">)</span>
         <span class="n">_try_merge_anticommuting_flows_inplace</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">destruction</span><span class="p">)</span></div>
+</div>
 
 
 

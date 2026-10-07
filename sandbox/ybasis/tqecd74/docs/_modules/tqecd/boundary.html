@@ -412,8 +412,6 @@
 <div class="viewcode-block" id="BoundaryStabilizer">
 <a class="viewcode-back" href="../../_autosummary/tqecd.boundary.BoundaryStabilizer.html#tqecd.boundary.BoundaryStabilizer">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">BoundaryStabilizer</span><span class="p">:</span>
-<div class="viewcode-block" id="BoundaryStabilizer.__init__">
-<a class="viewcode-back" href="../../_autosummary/tqecd.boundary.BoundaryStabilizer.html#tqecd.boundary.BoundaryStabilizer.__init__">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">stabilizer</span><span class="p">:</span> <span class="n">PauliString</span><span class="p">,</span>
@@ -478,8 +476,7 @@
                 <span class="o">|</span> <span class="n">_collapsing_pauli_masks</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
             <span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_reset_qubits</span><span class="p">:</span> <span class="nb">frozenset</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">reset_qubits</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_is_forward</span> <span class="o">=</span> <span class="n">forward</span></div>
-
+        <span class="bp">self</span><span class="o">.</span><span class="n">_is_forward</span> <span class="o">=</span> <span class="n">forward</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">has_anticommuting_operations</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
@@ -538,6 +535,8 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">resets_qubits</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">frozenset</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_reset_qubits</span>
 
+<div class="viewcode-block" id="BoundaryStabilizer.merge">
+<a class="viewcode-back" href="../../_autosummary/tqecd.boundary.BoundaryStabilizer.html#tqecd.boundary.BoundaryStabilizer.merge">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">merge</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">BoundaryStabilizer</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BoundaryStabilizer</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">"""Merge two boundary stabilizers together.</span>
 
@@ -614,7 +613,8 @@
             <span class="n">reset_qubits</span><span class="p">,</span>
             <span class="n">is_forward_merge</span><span class="p">,</span>
             <span class="n">_collapsing_pauli_masks</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_collapsing_pauli_masks</span><span class="p">,</span>
-        <span class="p">)</span>
+        <span class="p">)</span></div>
+
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
         <span class="n">ret</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"BoundaryStabilizers(stabilizer=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_stabilizer</span><span class="si">}</span><span class="s2">, "</span>
@@ -624,6 +624,8 @@
         <span class="n">ret</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">", resets=</span><span class="si">{</span><span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_reset_qubits</span><span class="p">)</span><span class="si">}</span><span class="s2">, is_forward=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_is_forward</span><span class="si">}</span><span class="s2">)"</span>
         <span class="k">return</span> <span class="n">ret</span>
 
+<div class="viewcode-block" id="BoundaryStabilizer.coordinates">
+<a class="viewcode-back" href="../../_autosummary/tqecd.boundary.BoundaryStabilizer.html#tqecd.boundary.BoundaryStabilizer.coordinates">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">coordinates</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">qubit_coordinates</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="o">...</span><span class="p">]]</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="o">...</span><span class="p">]:</span>
@@ -653,8 +655,11 @@
             <span class="p">)</span>
         <span class="c1"># Avoid returning numpy.float64 type returned by numpy.mean by</span>
         <span class="c1"># explicitly calling float() on it.</span>
-        <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">numpy</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">measurement_coordinates</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+        <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">numpy</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">measurement_coordinates</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span></div>
 
+
+<div class="viewcode-block" id="BoundaryStabilizer.with_measurement_offset">
+<a class="viewcode-back" href="../../_autosummary/tqecd.boundary.BoundaryStabilizer.html#tqecd.boundary.BoundaryStabilizer.with_measurement_offset">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">with_measurement_offset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">offset</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BoundaryStabilizer</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">BoundaryStabilizer</span><span class="p">(</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_stabilizer</span><span class="p">,</span>
@@ -663,14 +668,18 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">_reset_qubits</span><span class="p">,</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_is_forward</span><span class="p">,</span>
             <span class="n">_collapsing_pauli_masks</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_collapsing_pauli_masks</span><span class="p">,</span>
-        <span class="p">)</span>
+        <span class="p">)</span></div>
 
+
+<div class="viewcode-block" id="BoundaryStabilizer.is_trivial">
+<a class="viewcode-back" href="../../_autosummary/tqecd.boundary.BoundaryStabilizer.html#tqecd.boundary.BoundaryStabilizer.is_trivial">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">is_trivial</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
         <span class="k">return</span> <span class="p">(</span>
             <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">has_anticommuting_operations</span>
             <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">after_collapse</span><span class="o">.</span><span class="n">non_trivial_pauli_count</span> <span class="o">==</span> <span class="mi">0</span>
             <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_stabilizer</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
-        <span class="p">)</span>
+        <span class="p">)</span></div>
+
 
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">source_qubits</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">frozenset</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>

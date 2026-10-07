@@ -426,8 +426,6 @@
 <div class="viewcode-block" id="Fragment">
 <a class="viewcode-back" href="../../_autosummary/tqecd.fragment.Fragment.html#tqecd.fragment.Fragment">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">Fragment</span><span class="p">:</span>
-<div class="viewcode-block" id="Fragment.__init__">
-<a class="viewcode-back" href="../../_autosummary/tqecd.fragment.Fragment.html#tqecd.fragment.Fragment.__init__">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">circuit</span><span class="p">:</span> <span class="n">stim</span><span class="o">.</span><span class="n">Circuit</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">"""A sub-circuit guaranteed to end with a moment filled by measurement</span>
 <span class="sd">        instructions.</span>
@@ -497,8 +495,7 @@
                 <span class="s2">"A Fragment should end with at least one measurement. "</span>
                 <span class="s2">"The provided circuit does not seem to check that condition.</span><span class="se">\n</span><span class="s2">"</span>
                 <span class="sa">f</span><span class="s2">"Provided circuit:</span><span class="se">\n</span><span class="si">{</span><span class="n">circuit</span><span class="si">}</span><span class="s2">"</span>
-            <span class="p">)</span></div>
-
+            <span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">resets</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">PauliString</span><span class="p">]:</span>
@@ -534,10 +531,13 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">circuit</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">stim</span><span class="o">.</span><span class="n">Circuit</span><span class="p">:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_circuit</span>
 
+<div class="viewcode-block" id="Fragment.get_tableau">
+<a class="viewcode-back" href="../../_autosummary/tqecd.fragment.Fragment.html#tqecd.fragment.Fragment.get_tableau">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_tableau</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">stim</span><span class="o">.</span><span class="n">Tableau</span><span class="p">:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_circuit</span><span class="o">.</span><span class="n">to_tableau</span><span class="p">(</span>
             <span class="n">ignore_measurement</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ignore_noise</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ignore_reset</span><span class="o">=</span><span class="kc">True</span>
-        <span class="p">)</span>
+        <span class="p">)</span></div>
+
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
         <span class="k">return</span> <span class="sa">f</span><span class="s2">"Fragment(circuit=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_circuit</span><span class="si">!r}</span><span class="s2">)"</span>
@@ -565,8 +565,11 @@
                 <span class="s2">"fragment for the loop body."</span>
             <span class="p">)</span>
 
+<div class="viewcode-block" id="FragmentLoop.with_repetitions">
+<a class="viewcode-back" href="../../_autosummary/tqecd.fragment.FragmentLoop.html#tqecd.fragment.FragmentLoop.with_repetitions">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">with_repetitions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">repetitions</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FragmentLoop</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">FragmentLoop</span><span class="p">(</span><span class="n">fragments</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">fragments</span><span class="p">,</span> <span class="n">repetitions</span><span class="o">=</span><span class="n">repetitions</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">FragmentLoop</span><span class="p">(</span><span class="n">fragments</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">fragments</span><span class="p">,</span> <span class="n">repetitions</span><span class="o">=</span><span class="n">repetitions</span><span class="p">)</span></div>
+
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
         <span class="k">return</span> <span class="sa">f</span><span class="s2">"FragmentLoop(repetitions=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">repetitions</span><span class="si">}</span><span class="s2">, fragments=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">fragments</span><span class="si">!r}</span><span class="s2">)"</span></div>

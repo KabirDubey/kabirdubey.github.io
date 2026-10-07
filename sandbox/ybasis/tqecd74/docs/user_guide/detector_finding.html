@@ -363,9 +363,11 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="quick_start.html">Quick start</a></li>
-<li class="toctree-l1"><a class="reference internal" href="basic_concepts.html">Basic concepts</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">How detectors are found</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../media/detectors/detector_finding_illustration.html">Example</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="basic_concepts.html">Basic concepts</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">How detectors are found</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../media/detectors/detector_finding_illustration.html">Example</a></li>
+</ul>
+</details></li>
 </ul>
 </div>
 </nav></div>
@@ -408,6 +410,9 @@
     </li>
     
     <li class="breadcrumb-item"><a href="index.html" class="nav-link">User Guide</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="basic_concepts.html" class="nav-link">Automatic detector finding</a></li>
     
     <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">How detectors are found</span></li>
   </ul>
@@ -462,13 +467,14 @@ Its collapsing operations are the resets of the fragment.</p></li>
 </ul>
 <p>A flow <em>commutes</em> when its Pauli string commutes with each of its collapsing operations.
 Then the collapse is defined: the Pauli string without the qubits of the collapsing
-operations (<code class="docutils literal notranslate"><span class="pre">BoundaryStabilizer.after_collapse</span></code>) is the part of the flow that crosses
-the boundary. A flow <em>anticommutes</em> when its Pauli string anticommutes with at least one
-collapsing operation (<code class="docutils literal notranslate"><span class="pre">BoundaryStabilizer.has_anticommuting_operations</span></code>). For example,
-a creation flow <code class="docutils literal notranslate"><span class="pre">Z0</span></code> that meets an <code class="docutils literal notranslate"><span class="pre">MX</span> <span class="pre">0</span></code> or an <code class="docutils literal notranslate"><span class="pre">MY</span> <span class="pre">0</span></code> measurement anticommutes.
-That measurement removes <code class="docutils literal notranslate"><span class="pre">Z0</span></code> from the stabilizers of the state, so the flow alone
-cannot cross the boundary. A product of anticommuting flows can commute with every
-collapsing operation, and that product crosses the boundary.</p>
+operations (<a class="reference internal" href="../_autosummary/tqecd.boundary.BoundaryStabilizer.html#tqecd.boundary.BoundaryStabilizer.after_collapse" title="tqecd.boundary.BoundaryStabilizer.after_collapse"><code class="xref py py-attr docutils literal notranslate"><span class="pre">after_collapse</span></code></a>) is the part
+of the flow that crosses the boundary. A flow <em>anticommutes</em> when its Pauli string
+anticommutes with at least one collapsing operation
+(<a class="reference internal" href="../_autosummary/tqecd.boundary.BoundaryStabilizer.html#tqecd.boundary.BoundaryStabilizer.has_anticommuting_operations" title="tqecd.boundary.BoundaryStabilizer.has_anticommuting_operations"><code class="xref py py-attr docutils literal notranslate"><span class="pre">has_anticommuting_operations</span></code></a>). For
+example, a creation flow <code class="docutils literal notranslate"><span class="pre">Z0</span></code> that meets an <code class="docutils literal notranslate"><span class="pre">MX</span> <span class="pre">0</span></code> or an <code class="docutils literal notranslate"><span class="pre">MY</span> <span class="pre">0</span></code> measurement
+anticommutes. That measurement removes <code class="docutils literal notranslate"><span class="pre">Z0</span></code> from the stabilizers of the state, so the
+flow alone cannot cross the boundary. A product of anticommuting flows can commute with
+every collapsing operation, and that product crosses the boundary.</p>
 </section>
 <section id="covers">
 <h2>Covers<a class="headerlink" href="#covers" title="Link to this heading">#</a></h2>
@@ -510,12 +516,12 @@ two fragments. All anticommuting flows of one list must have the same
 collapsing operations. The merge finds a commuting cover of the product of
 these operations by the Pauli strings of the anticommuting flows of the list
 (<a class="reference internal" href="#minimal-commuting-cover"><span class="std std-ref">Minimal commuting cover</span></a>). It replaces the flows of the cover by one flow
-(<code class="docutils literal notranslate"><span class="pre">BoundaryStabilizer.merge</span></code>). The Pauli string of this flow is the product of
-their Pauli strings. For creation flows, the merged flow keeps all their resets
-and only the measurements on qubits where the product is not the identity. For
-destruction flows, it keeps all their measurements and only the resets on
-qubits where the product is not the identity. The merge repeats until no
-commuting cover is left.</p></li>
+(<a class="reference internal" href="../_autosummary/tqecd.boundary.BoundaryStabilizer.html#tqecd.boundary.BoundaryStabilizer.merge" title="tqecd.boundary.BoundaryStabilizer.merge"><code class="xref py py-meth docutils literal notranslate"><span class="pre">merge()</span></code></a>). The Pauli string of this
+flow is the product of their Pauli strings. For creation flows, the merged flow
+keeps all their resets and only the measurements on qubits where the product is
+not the identity. For destruction flows, it keeps all their measurements and only
+the resets on qubits where the product is not the identity. The merge repeats
+until no commuting cover is left.</p></li>
 <li><p>A creation flow of the left fragment is matched one-to-one with a destruction
 flow of the right fragment when they are equal after the collapsing operations.
 The two flows give one detector. Anticommuting flows are skipped.</p></li>

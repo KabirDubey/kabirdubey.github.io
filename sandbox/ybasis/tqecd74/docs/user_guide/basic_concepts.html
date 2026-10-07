@@ -42,6 +42,8 @@
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'user_guide/basic_concepts';</script>
     <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -363,9 +365,11 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="quick_start.html">Quick start</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Basic concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="detector_finding.html">How detectors are found</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../media/detectors/detector_finding_illustration.html">Example</a></li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Basic concepts</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="detector_finding.html">How detectors are found</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../media/detectors/detector_finding_illustration.html">Example</a></li>
+</ul>
+</details></li>
 </ul>
 </div>
 </nav></div>
@@ -560,10 +564,16 @@ will differentiate creation and destruction flows: <code class="docutils literal
 <code class="docutils literal notranslate"><span class="pre">FragmentLoopFlows</span></code> for a repeated block).</p>
 </section>
 </section>
-<section id="example">
-<h2>Example<a class="headerlink" href="#example" title="Link to this heading">#</a></h2>
-<p>The notebook <a class="reference internal" href="../media/detectors/detector_finding_illustration.html"><span class="doc">How to automatically find detectors?</span></a> finds the
-detectors of an example circuit step by step.</p>
+<section id="detector-finding-and-example">
+<h2>Detector finding and example<a class="headerlink" href="#detector-finding-and-example" title="Link to this heading">#</a></h2>
+<p>The next page explains how <code class="docutils literal notranslate"><span class="pre">tqecd</span></code> finds detectors with these concepts. The notebook
+finds the detectors of an example circuit step by step.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="detector_finding.html">How detectors are found</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../media/detectors/detector_finding_illustration.html">Example</a></li>
+</ul>
+</div>
 </section>
 </section>
 
@@ -622,7 +632,7 @@ detectors of an example circuit step by step.</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#boundary-stabilizers">Boundary stabilizers</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example">Example</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#detector-finding-and-example">Detector finding and example</a></li>
 </ul>
   </nav></div>
 
