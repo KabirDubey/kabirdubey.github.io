@@ -1,0 +1,793 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>How detectors are found &#8212; TQECD  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=a95f357e85573c9b56d5" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=a95f357e85573c9b56d5" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=a95f357e85573c9b56d5"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=a95f357e85573c9b56d5" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=a95f357e85573c9b56d5" />
+
+    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'user_guide/detector_finding';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="How to automatically find detectors?" href="../media/detectors/detector_finding_illustration.html" />
+    <link rel="prev" title="Automatic detector finding" href="basic_concepts.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">TQECD  documentation</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../index.html">
+    Introduction
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../contributor_guide.html">
+    Contributor Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../api.html">
+    API Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/tqec/tqecd" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://groups.google.com/g/tqec-design-automation" title="Google Group" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i><span class="visually-hidden">Google Group</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../index.html">
+    Introduction
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../contributor_guide.html">
+    Contributor Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../api.html">
+    API Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/tqec/tqecd" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://groups.google.com/g/tqec-design-automation" title="Google Group" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i><span class="visually-hidden">Google Group</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar"><svg class="pst-icon svg-inline--fa" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Get started</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quick_start.html">Quick start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basic_concepts.html">Basic concepts</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">How detectors are found</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../media/detectors/detector_finding_illustration.html">Example</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">User Guide</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">How detectors are found</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="how-detectors-are-found">
+<h1>How detectors are found<a class="headerlink" href="#how-detectors-are-found" title="Link to this heading">#</a></h1>
+<p>A detector is a set of measurements whose combined parity is deterministic when the
+circuit has no noise. <a class="reference internal" href="../_autosummary/tqecd.construction.annotate_detectors_automatically.html#tqecd.construction.annotate_detectors_automatically" title="tqecd.construction.annotate_detectors_automatically"><code class="xref py py-func docutils literal notranslate"><span class="pre">annotate_detectors_automatically()</span></code></a>
+finds detectors by <em>flow matching</em> and adds one <code class="docutils literal notranslate"><span class="pre">DETECTOR</span></code> instruction for each. It
+does not add <code class="docutils literal notranslate"><span class="pre">OBSERVABLE_INCLUDE</span></code> instructions. This page uses the terms of
+<a class="reference internal" href="basic_concepts.html"><span class="doc">Automatic detector finding</span></a>: fragments, flows, collapsing operations and boundary stabilizers.</p>
+<section id="why-detector-annotation-matters">
+<h2>Why detector annotation matters<a class="headerlink" href="#why-detector-annotation-matters" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">stim</span></code> <a class="reference internal" href="#gidney2021" id="id1"><span>[Gidney2021]</span></a> uses the <code class="docutils literal notranslate"><span class="pre">DETECTOR</span></code> and <code class="docutils literal notranslate"><span class="pre">OBSERVABLE_INCLUDE</span></code> instructions of
+a noisy circuit to build a detector error model (DEM). For each fault, the DEM gives its
+probability, the detectors that it triggers and the observables that it flips
+<a class="reference internal" href="#rennela2026" id="id2"><span>[Rennela2026]</span></a>. A decoder takes the DEM as input and assumes that it is correct
+<a class="reference internal" href="#rennela2026" id="id3"><span>[Rennela2026]</span></a>. Thus the annotation sets what the decoder can see:</p>
+<ul class="simple">
+<li><p>A detector that is not deterministic is not valid. By default, <code class="docutils literal notranslate"><span class="pre">stim</span></code> does not build
+a DEM from a circuit that contains one.</p></li>
+<li><p>A missing detector does not stop the DEM build, but a fault whose only detector is
+missing triggers no detector at all. Such a fault is not detected, and the distance
+of the annotated circuit can decrease. <a class="reference internal" href="#y-basis-transition-round"><span class="std std-ref">Y-basis transition round</span></a> shows an
+example.</p></li>
+</ul>
+</section>
+<section id="commuting-and-anticommuting-flows">
+<h2>Commuting and anticommuting flows<a class="headerlink" href="#commuting-and-anticommuting-flows" title="Link to this heading">#</a></h2>
+<p>Each flow is stored as a <a class="reference internal" href="../_autosummary/tqecd.boundary.BoundaryStabilizer.html#tqecd.boundary.BoundaryStabilizer" title="tqecd.boundary.BoundaryStabilizer"><code class="xref py py-class docutils literal notranslate"><span class="pre">BoundaryStabilizer</span></code></a>. Its Pauli
+string is the stabilizer at one boundary of a fragment, before the collapsing operations
+of that boundary.</p>
+<ul class="simple">
+<li><p>A creation flow starts at a reset of the fragment and propagates forward. Its
+collapsing operations are the measurements of the fragment.</p></li>
+<li><p>A destruction flow starts at a measurement of the fragment and propagates backward.
+Its collapsing operations are the resets of the fragment.</p></li>
+</ul>
+<p>A flow <em>commutes</em> when its Pauli string commutes with each of its collapsing operations.
+Then the collapse is defined: the Pauli string without the qubits of the collapsing
+operations (<code class="docutils literal notranslate"><span class="pre">BoundaryStabilizer.after_collapse</span></code>) is the part of the flow that crosses
+the boundary. A flow <em>anticommutes</em> when its Pauli string anticommutes with at least one
+collapsing operation (<code class="docutils literal notranslate"><span class="pre">BoundaryStabilizer.has_anticommuting_operations</span></code>). For example,
+a creation flow <code class="docutils literal notranslate"><span class="pre">Z0</span></code> that meets an <code class="docutils literal notranslate"><span class="pre">MX</span> <span class="pre">0</span></code> or an <code class="docutils literal notranslate"><span class="pre">MY</span> <span class="pre">0</span></code> measurement anticommutes.
+That measurement removes <code class="docutils literal notranslate"><span class="pre">Z0</span></code> from the stabilizers of the state, so the flow alone
+cannot cross the boundary. A product of anticommuting flows can commute with every
+collapsing operation, and that product crosses the boundary.</p>
+</section>
+<section id="covers">
+<h2>Covers<a class="headerlink" href="#covers" title="Link to this heading">#</a></h2>
+<p>A <em>cover</em> of a Pauli string <code class="docutils literal notranslate"><span class="pre">target</span></code> by a list of Pauli strings <code class="docutils literal notranslate"><span class="pre">sources</span></code> is a list
+of indices into <code class="docutils literal notranslate"><span class="pre">sources</span></code>. Pauli strings in <code class="docutils literal notranslate"><span class="pre">tqecd</span></code> have no sign, so all products on
+this page ignore the sign. The functions in <a class="reference internal" href="../_autosummary/tqecd.cover.html#module-tqecd.cover" title="tqecd.cover"><code class="xref py py-mod docutils literal notranslate"><span class="pre">tqecd.cover</span></code></a> return two kinds of
+cover.</p>
+<ul class="simple">
+<li><p>An <em>exact cover</em> (<a class="reference internal" href="../_autosummary/tqecd.cover.find_exact_cover.html#tqecd.cover.find_exact_cover" title="tqecd.cover.find_exact_cover"><code class="xref py py-func docutils literal notranslate"><span class="pre">find_exact_cover()</span></code></a>): the product of the
+selected sources equals <code class="docutils literal notranslate"><span class="pre">target</span></code> on every qubit.</p></li>
+<li><p>A <em>commuting cover</em> (<a class="reference internal" href="../_autosummary/tqecd.cover.find_commuting_cover_on_target_qubits.html#tqecd.cover.find_commuting_cover_on_target_qubits" title="tqecd.cover.find_commuting_cover_on_target_qubits"><code class="xref py py-func docutils literal notranslate"><span class="pre">find_commuting_cover_on_target_qubits()</span></code></a>):
+on every qubit where <code class="docutils literal notranslate"><span class="pre">target</span></code> is not the identity, the product of the selected
+sources commutes with the Pauli of <code class="docutils literal notranslate"><span class="pre">target</span></code> on that qubit. On the other qubits, the
+product can be any Pauli.</p></li>
+</ul>
+<p>In flow matching (step 3a below), the <code class="docutils literal notranslate"><span class="pre">target</span></code> of a commuting cover is the product of
+the collapsing operations of a boundary. These operations act on one qubit each, so the
+product of a commuting cover commutes with every collapsing operation. Both functions
+encode each source as a bit vector and solve a linear system over GF(2). For an exact
+cover, the vector holds the <code class="docutils literal notranslate"><span class="pre">X</span></code> and <code class="docutils literal notranslate"><span class="pre">Z</span></code> bits of each qubit. For a commuting cover,
+it holds one bit per qubit of <code class="docutils literal notranslate"><span class="pre">target</span></code>, set when the source anticommutes with
+<code class="docutils literal notranslate"><span class="pre">target</span></code> on that qubit.</p>
+</section>
+<section id="flow-matching">
+<h2>Flow matching<a class="headerlink" href="#flow-matching" title="Link to this heading">#</a></h2>
+<p>Flow matching runs these steps in order.</p>
+<ol class="arabic simple">
+<li><p>The flows of every fragment are built.</p></li>
+<li><p>Inside each fragment, a non-trivial commuting flow whose Pauli string is the identity
+after the collapse gives a detector directly, without any cover search.</p></li>
+<li><p>Each pair of adjacent fragments goes through
+<a class="reference internal" href="../_autosummary/tqecd.match.match_boundary_stabilizers.html#tqecd.match.match_boundary_stabilizers" title="tqecd.match.match_boundary_stabilizers"><code class="xref py py-func docutils literal notranslate"><span class="pre">match_boundary_stabilizers()</span></code></a>. A <code class="docutils literal notranslate"><span class="pre">REPEAT</span></code> block counts as one
+unit in the pairing. Its destruction flows are those of its first body fragment and
+its creation flows are those of its last.</p>
+<ol class="loweralpha simple">
+<li><p>The anticommuting flows are merged into commuting flows. The merge runs on four
+lists separately: the creation flows and the destruction flows of each of the
+two fragments. All anticommuting flows of one list must have the same
+collapsing operations. The merge finds a commuting cover of the product of
+these operations by the Pauli strings of the anticommuting flows of the list
+(<a class="reference internal" href="#minimal-commuting-cover"><span class="std std-ref">Minimal commuting cover</span></a>). It replaces the flows of the cover by one flow
+(<code class="docutils literal notranslate"><span class="pre">BoundaryStabilizer.merge</span></code>). The Pauli string of this flow is the product of
+their Pauli strings. For creation flows, the merged flow keeps all their resets
+and only the measurements on qubits where the product is not the identity. For
+destruction flows, it keeps all their measurements and only the resets on
+qubits where the product is not the identity. The merge repeats until no
+commuting cover is left.</p></li>
+<li><p>A creation flow of the left fragment is matched one-to-one with a destruction
+flow of the right fragment when they are equal after the collapsing operations.
+The two flows give one detector. Anticommuting flows are skipped.</p></li>
+<li><p>The remaining flows are matched by an exact cover in both directions. Left
+creation flows are covered by right destruction flows, then right destruction
+flows by left creation flows. This step is skipped when either side has no flow
+left, or when both sides have exactly one: the code expects no cover in these
+cases. The measurements of the detector are
+the union of the target’s measurements and the symmetric difference of the
+cover’s measurements.</p></li>
+</ol>
+</li>
+</ol>
+</section>
+<section id="minimal-commuting-cover">
+<span id="id4"></span><h2>Minimal commuting cover<a class="headerlink" href="#minimal-commuting-cover" title="Link to this heading">#</a></h2>
+<p>The merge of step 3a uses
+<a class="reference internal" href="../_autosummary/tqecd.cover.find_commuting_cover_on_target_qubits.html#tqecd.cover.find_commuting_cover_on_target_qubits" title="tqecd.cover.find_commuting_cover_on_target_qubits"><code class="xref py py-func docutils literal notranslate"><span class="pre">find_commuting_cover_on_target_qubits()</span></code></a>, which returns a commuting
+cover with the fewest sources when its search is exact (see below). A larger cover also
+merges flows that are not needed. Those flows are then not available to other
+detectors, so detectors can be lost.
+<a class="reference internal" href="#y-basis-transition-round"><span class="std std-ref">Y-basis transition round</span></a> shows a circuit where the minimal cover restores four
+detectors and the shortest graphlike error grows from length 1 to length 3.</p>
+<p>Take collapsing operations <code class="docutils literal notranslate"><span class="pre">Y0*Y1*Y2</span></code> and four anticommuting flows.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">stim</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">tqecd.cover</span><span class="w"> </span><span class="kn">import</span> <span class="n">find_commuting_cover_on_target_qubits</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tqecd.pauli</span><span class="w"> </span><span class="kn">import</span> <span class="n">PauliString</span><span class="p">,</span> <span class="n">pauli_product</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">pauli</span><span class="p">(</span><span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">PauliString</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">PauliString</span><span class="o">.</span><span class="n">from_stim_pauli_string</span><span class="p">(</span><span class="n">stim</span><span class="o">.</span><span class="n">PauliString</span><span class="p">(</span><span class="n">text</span><span class="p">))</span>
+
+
+<span class="n">target</span> <span class="o">=</span> <span class="n">pauli</span><span class="p">(</span><span class="s2">"YYY"</span><span class="p">)</span>
+<span class="n">sources</span> <span class="o">=</span> <span class="p">[</span><span class="n">pauli</span><span class="p">(</span><span class="s2">"_XZ"</span><span class="p">),</span> <span class="n">pauli</span><span class="p">(</span><span class="s2">"Z__"</span><span class="p">),</span> <span class="n">pauli</span><span class="p">(</span><span class="s2">"ZZZ"</span><span class="p">),</span> <span class="n">pauli</span><span class="p">(</span><span class="s2">"ZXZ"</span><span class="p">)]</span>
+<span class="n">cover</span> <span class="o">=</span> <span class="n">find_commuting_cover_on_target_qubits</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">sources</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">cover</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pauli_product</span><span class="p">([</span><span class="n">sources</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">cover</span><span class="p">]))</span>
+</pre></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>[2, 3]
+Y1
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Z0*Z1*Z2</span></code> and <code class="docutils literal notranslate"><span class="pre">Z0*X1*Z2</span></code> both anticommute with <code class="docutils literal notranslate"><span class="pre">Y0*Y1*Y2</span></code> on all three qubits,
+and their product <code class="docutils literal notranslate"><span class="pre">Y1</span></code> commutes with it. With <code class="docutils literal notranslate"><span class="pre">tqecd</span></code> 0.2.1 from PyPI, the same
+code prints <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1,</span> <span class="pre">2]</span></code>, a cover of three flows. The search is exact when the null
+space of the anticommutation vectors has at most 22 dimensions. Above that size, a
+heuristic returns a cover that is not always the smallest. See
+<a class="reference internal" href="../_autosummary/tqecd.cover.find_commuting_cover_on_target_qubits.html#tqecd.cover.find_commuting_cover_on_target_qubits" title="tqecd.cover.find_commuting_cover_on_target_qubits"><code class="xref py py-func docutils literal notranslate"><span class="pre">find_commuting_cover_on_target_qubits()</span></code></a> for the search steps and
+their limits.</p>
+</section>
+<section id="y-basis-transition-round">
+<span id="id5"></span><h2>Y-basis transition round<a class="headerlink" href="#y-basis-transition-round" title="Link to this heading">#</a></h2>
+<p>A Y half cube uses the in-place Y-basis construction of Gidney <a class="reference internal" href="#gidney2024" id="id6"><span>[Gidney2024]</span></a>. A single
+transition round changes the boundaries of the patch from XZXZ to XXZZ. This maps the Y
+observable to the product of all the X-basis stabilizers of the XXZZ patch
+<a class="reference internal" href="#gidney2024" id="id7"><span>[Gidney2024]</span></a>, and the stabilizer rounds after it measure that product again. The paper
+states:</p>
+<blockquote>
+<div><p>By repeatedly measuring the stabilizers of the patch, you learn this product to
+arbitrarily high certainty… it’s sufficient to measure these stabilizers d/2
+times.</p>
+</div></blockquote>
+<p>The circuits of the paper are in its data record <a class="reference internal" href="#gidneydata2022" id="id8"><span>[GidneyData2022]</span></a>. The transition round
+contains <code class="docutils literal notranslate"><span class="pre">CY</span></code> gates, <code class="docutils literal notranslate"><span class="pre">S</span></code> gates and <code class="docutils literal notranslate"><span class="pre">MY</span></code> measurements. Near this round, some flows
+anticommute with their collapsing operations, for example with the <code class="docutils literal notranslate"><span class="pre">MY</span></code> measurements,
+and <code class="docutils literal notranslate"><span class="pre">tqecd</span></code> merges them with commuting covers.</p>
+<p><a class="reference external" href="https://github.com/tqec/tqecd/pull/74">tqecd pull request #74</a> compares the
+detectors of a Y half cube initialization with and without the minimal commuting cover.</p>
+<p>The two figures show the detecting regions of the <code class="docutils literal notranslate"><span class="pre">s_gate_x</span></code> circuit of <code class="docutils literal notranslate"><span class="pre">tqec</span></code>
+(fixed bulk convention; the <code class="docutils literal notranslate"><span class="pre">tqec</span></code> commit is not recorded) at <code class="docutils literal notranslate"><span class="pre">k=1</span></code>
+(<a class="reference download internal" download="" href="../_downloads/789673f3402cac802be63b163b2a7a06/s_gate_x_k1_no_detectors.stim"><code class="xref download docutils literal notranslate"><span class="pre">circuit</span></code></a>) in ticks 42 to
+49, the transition round. <code class="docutils literal notranslate"><span class="pre">stim</span></code> draws a region red when it holds only
+<code class="docutils literal notranslate"><span class="pre">X</span></code>, blue when it holds only <code class="docutils literal notranslate"><span class="pre">Z</span></code>, and gray when it holds more than one Pauli type.</p>
+<figure class="align-default" id="id9">
+<img alt="Detecting regions in the transition round with tqecd 0.2.1." src="../_images/y_switch_detectors_before.svg" />
+<figcaption>
+<p><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">tqecd</span></code> 0.2.1: 126 detectors. The shortest graphlike error has length 1.</span><a class="headerlink" href="#id9" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id10">
+<img alt="Detecting regions in the transition round with the minimal commuting cover." src="../_images/y_switch_detectors_after.svg" />
+<figcaption>
+<p><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">tqecd</span></code> with the minimal commuting cover: 130 detectors. The shortest graphlike
+error has length 3. The four new regions are red in ticks 42 to 45 and gray in ticks
+46 to 49, where they hold <code class="docutils literal notranslate"><span class="pre">X</span></code>, <code class="docutils literal notranslate"><span class="pre">Y</span></code> and <code class="docutils literal notranslate"><span class="pre">Z</span></code> on different qubits.</span><a class="headerlink" href="#id10" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The circuit file already contains noise with probability 0.001: <code class="docutils literal notranslate"><span class="pre">X_ERROR</span></code> or
+<code class="docutils literal notranslate"><span class="pre">Z_ERROR</span></code> on each reset and measurement, <code class="docutils literal notranslate"><span class="pre">DEPOLARIZE1</span></code> after each single-qubit gate
+and <code class="docutils literal notranslate"><span class="pre">DEPOLARIZE2</span></code> after each two-qubit gate. The shortest graphlike error is an upper
+bound on the circuit distance. To reproduce the numbers in the captions, run this code
+from the repository root:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">stim</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">tqecd</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotate_detectors_automatically</span>
+
+<span class="n">circuit</span> <span class="o">=</span> <span class="n">annotate_detectors_automatically</span><span class="p">(</span>
+    <span class="n">stim</span><span class="o">.</span><span class="n">Circuit</span><span class="o">.</span><span class="n">from_file</span><span class="p">(</span><span class="s2">"docs/media/detectors/s_gate_x_k1_no_detectors.stim"</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="n">error</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">shortest_graphlike_error</span><span class="p">(</span><span class="n">ignore_ungraphlike_errors</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">circuit</span><span class="o">.</span><span class="n">num_detectors</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">error</span><span class="p">))</span>
+</pre></div>
+</div>
+</section>
+<section id="unrolled-fallback">
+<h2>Unrolled fallback<a class="headerlink" href="#unrolled-fallback" title="Link to this heading">#</a></h2>
+<p>A detector placed inside a <code class="docutils literal notranslate"><span class="pre">REPEAT</span></code> body must be valid for every iteration. When a
+loop repeats more than once, the matcher checks that the detectors found across the
+loop’s back edge (last body fragment to first body fragment) equal those found at the
+loop’s entry (the fragment before the loop to the first body fragment). It raises
+<code class="docutils literal notranslate"><span class="pre">TQECDException</span></code> otherwise. When a <code class="docutils literal notranslate"><span class="pre">TQECDException</span></code> is raised on a circuit that
+contains a loop, the circuit is unrolled and the same flow matching is run on it.
+Unrolling expands every <code class="docutils literal notranslate"><span class="pre">REPEAT</span></code> block and inserts a <code class="docutils literal notranslate"><span class="pre">TICK</span></code> where one is
+missing, at the boundaries between loop copies and between a loop and its neighbouring
+instructions. The result has no <code class="docutils literal notranslate"><span class="pre">REPEAT</span></code> block, so its size grows with the number of
+repetitions. If the unrolled circuit does not satisfy the input requirements, the
+original exception is re-raised.</p>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
+<div role="list" class="citation-list">
+<div class="citation" id="gidney2024" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Gidney2024<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id6">1</a>,<a role="doc-backlink" href="#id7">2</a>)</span>
+<p>C. Gidney, “Inplace Access to the Surface Code Y Basis”, Quantum 8,
+1310 (2024). <a class="reference external" href="https://doi.org/10.22331/q-2024-04-08-1310">https://doi.org/10.22331/q-2024-04-08-1310</a>, arXiv:2302.07395.</p>
+</div>
+<div class="citation" id="gidneydata2022" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id8">GidneyData2022</a><span class="fn-bracket">]</span></span>
+<p>C. Gidney, Data for “Inplace Access to the Surface Code Y Basis”,
+Zenodo (2022). <a class="reference external" href="https://doi.org/10.5281/zenodo.7487893">https://doi.org/10.5281/zenodo.7487893</a></p>
+</div>
+<div class="citation" id="gidney2021" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">Gidney2021</a><span class="fn-bracket">]</span></span>
+<p>C. Gidney, “Stim: a fast stabilizer circuit simulator”, Quantum 5, 497
+(2021). <a class="reference external" href="https://doi.org/10.22331/q-2021-07-06-497">https://doi.org/10.22331/q-2021-07-06-497</a>, arXiv:2103.02202.</p>
+</div>
+<div class="citation" id="rennela2026" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Rennela2026<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id2">1</a>,<a role="doc-backlink" href="#id3">2</a>)</span>
+<p>M. Rennela, “Quasilinear Equivalence Checking for Detector Error
+Models”, arXiv:2606.14677 (2026). https://doi.org/10.48550/arXiv.2606.14677</p>
+</div>
+</div>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="basic_concepts.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Automatic detector finding</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../media/detectors/detector_finding_illustration.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">How to automatically find detectors?</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-detector-annotation-matters">Why detector annotation matters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#commuting-and-anticommuting-flows">Commuting and anticommuting flows</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#covers">Covers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#flow-matching">Flow matching</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#minimal-commuting-cover">Minimal commuting cover</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#y-basis-transition-round">Y-basis transition round</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unrolled-fallback">Unrolled fallback</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../_sources/user_guide/detector_finding.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=a95f357e85573c9b56d5"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=a95f357e85573c9b56d5"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2024, TQEC Community.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.19.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
